@@ -1,0 +1,87 @@
+<html>
+	<head>
+		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<title>Prova Javascript</title>
+		
+	</head>
+	
+	<!-- Javascript eredita buona parte della sua sintassi dal C++ -->
+	<!-- Javascript è CASE SENSITIVE -->
+	<!-- Possono essere inseriti illimitati blocchi di script -->
+	<!-- I blocchi inseriti tra il tag <head> sono eleborati prima del body e sono disponibili a tutto il body -->
+	<body id="" onload="">
+		<script type="text/javascript">
+			//###########################################  INTRO  ################################################
+			// alert('Questo è Javascript in azione!');
+			
+			//####################################################################################################
+			// alert('Questo e\' Javascript in azione!');	// carattere di escape \
+			
+			//####################################################################################################
+			// "window" è il contenitore dei metodi che possono essere utilizzati in una finestra del browser
+			// window.alert("Il valore di pi greco: " + Math.PI);
+			
+			//####################################################################################################
+			// alert("Il valore di pi greco: " + Math.PI);
+			
+			//####################################################################################################
+			/* Ruota la finestra del browser
+			    random() 	 -> genera un numero tra 0 e 1 (con la virgola)
+			    round()  	 -> arrotonda ad un intero
+			    moveTo(x, y) -> sposta la finestra ad un punto definito dalle cordinate x e y
+			In questo caso x e y prendono come valore un intero tra 0 e 300. 
+			
+			for(i=1; i<=100; i++)
+				window.moveTo(Math.round(Math.random()*300), Math.round(Math.random()*300));
+			 */
+			
+			//####################################################################################################
+			/* write() inserisce i valori specificati tra parentesi
+			for(i=1; i<=10; i++)
+				window.document.write(i + "<br>");
+			 */
+			
+			//###################################  CONTROLLO VARIABILI  ##########################################
+			/* Assegna alla variabile colore un colore casuale e quindi dipinge il body
+			   16777215 -> intera gamma dei colori espressa in 24 bit
+			
+			for(i=1; i<=6; i++)
+			{
+				var colore = Math.round(Math.random()*16777215);
+				alert(colore);
+				window.document.body.bgColor = colore;	
+			}
+			 */
+			
+			//####################################################################################################
+			/* Per specificare le variabili basta scrivere:
+			
+				var i = 1;			-> (int)
+				var x = "ciao";		-> (string/char)
+				var flag1 = false;	-> (bool)
+			
+			   Il linguaggio si occupa di assegnare in automatico il tipo (int, string, bool, ...).
+			   Javascript è in grado di fare conversioni automatiche di tipo.
+			
+				alert(i + ' ' + x + ' ' + flag1);
+			 */ 
+			
+			//####################################################################################################
+			/* Funzioni semplici
+			var x = 3.14
+			
+			function prova()
+			{
+				var y = "Pi greco: ";
+				alert(y + x);
+			}
+			
+			prova();
+			 */
+			
+			//#############################################  ARRAY  ###############################################
+			
+		
+		</script>
+	</body>
+</html>
