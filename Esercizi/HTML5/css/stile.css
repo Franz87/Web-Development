@@ -1,0 +1,74 @@
+/* Codice per la compatibilità con versioni dei browser obsolete (che non riconoscono la semantica dell'HTML5) */
+article, aside, figure, figcaption, footer, header, hgroup, nav, section{
+	     display: block;
+}
+/* fine codice compatibilità */
+
+body {
+	width: 1200px;
+	margin: 0 auto 0 auto;
+	font-size: 18px;
+}
+
+header {
+	width: 1160px;
+	height: 70px;
+	background-color: #A4A875;
+	padding: 10px;
+	margin: 10px;
+}
+
+nav {
+	width: 1160px;
+	height: 70px;
+	background-color: #DCDCDA;
+	padding: 10px;
+	margin: 10px 10px 0 10px;
+}
+
+article {
+	width: 760px;
+	/*height: 300px;*/
+	height: auto;
+	float: left;
+	background-color: #47834B;
+	padding: 10px;
+	margin: 10px;	
+}
+
+section {
+	width: 740px;
+	/*height: 120px;*/
+	height:	auto;
+	background-color: #F2F2F2;
+	padding: 10px;
+	margin: 10px 0 0 0;*
+}
+
+aside {
+	width: 360px;
+	/*height: 300px;*/
+	height:	455px;
+	float: left;
+	background-color: #72C29B;
+	padding: 10px;	
+	margin: 10px;
+}
+
+footer {
+	clear: both;
+	width: 1160px;
+	height: 70px;
+	background-color: #C4C4C4;
+	padding: 10px;
+	margin: 10px;
+}
+
+figcaption {
+	font-size: 14px;
+	font-style: italic;
+}
+
+.imgSx {
+	float: left;
+}

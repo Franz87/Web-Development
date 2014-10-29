@@ -1,0 +1,67 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 - <time> indica in quale parte del documento è presente una data / orario, inoltre dà una formattazione
+			  universale comprensibile da ogni software.
+			  La formattazione standard Data è: AAAA:MM:GG (versione inglese YYYY:MM:DD)
+			  La formattazione standard Orario è: HH:MM+00:00
+	 - <mark> evidenzia il testo racchiuso in esso
+	 - <output> segnaposto che il tuo JavaScript può utilizzare per visualizzare delle informazioni frutto di calcolo
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L2 - Nuovi Elementi</title>
+	<link href="css/stile2.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section>
+		  <!-- Data -->
+		  <p>Grande evento! La partita si terrà il giorno
+			  <time datetime=”2014-02-21”>21 febbraio 2014</time>
+		  </p>
+		  
+		  <!-- Orario -->
+		  <p>Grande evento! La partita si terrà alle ore 
+		  	  <time datetime=”13:40+01:00”>13:40
+		  </p>
+		  
+		  <!-- Data + Orario (tramite comando "T") -->
+		  <p>Grande evento! La partita si terrà il 
+		      <time datetime=”2014-02-21T13:40+01:00”>21 febbraio 2014 alle 13:40</time>
+		  </p>
+		  
+		  <!-- Tag <mark> per l'evidenziazione (possibile settarlo tramite CSS) -->
+		  <p>
+		       Il <mark>testo</mark>, dal latino textus (con significato originario di tessuto o trama), 
+		       è un <mark>insieme di parole</mark>, correlate tra loro per costituire un'unità logico-concettuale.
+		  </p>
+		  
+	  </section>
+	
+	</article>
+	
+	<aside>
+		<!-- Tag <output> per modulo che, una volta inserita base ed altezza, restituisca l’area di un rettangolo -->
+		<form id=”areaRettangolo” onsubmit="return false" oninput="risultato.value = parseInt(base.value) * parseInt(altezza.value)">
+			Base <input name="base" type="number" step="any" min="0"><br>
+		    Altezza <input name="altezza" type="number" step="any" min="0"><br><br>
+		    Area = <output name="risultato"></output>
+		</form>
+	</aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

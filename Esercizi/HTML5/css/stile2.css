@@ -1,0 +1,80 @@
+/* Codice per la compatibilità con versioni dei browser obsolete (che non riconoscono la semantica dell'HTML5) */
+article, aside, figure, figcaption, footer, header, hgroup, nav, section{
+	     display: block;
+}
+/* fine codice compatibilità */
+
+body {
+	width: 1200px;
+	margin: 0 auto 0 auto;
+	font-size: 18px;
+}
+
+header {
+	width: 1160px;
+	height: 70px;
+	background-color: #A4A875;
+	padding: 10px;
+	margin: 10px;
+}
+
+nav {
+	width: 1160px;
+	height: 70px;
+	background-color: #DCDCDA;
+	padding: 10px;
+	margin: 10px 10px 0 10px;
+}
+
+article {
+	width: 760px;
+	/*height: 300px;*/
+	height: auto;
+	float: left;
+	background-color: #47834B;
+	padding: 10px;
+	margin: 10px;	
+}
+
+section {
+	width: 740px;
+	/*height: 120px;*/
+	height: auto;
+	background-color: #F2F2F2;
+	padding: 10px;
+	margin: 10px 0 0 0;*
+}
+
+aside {
+	width: 360px;
+	/*height: 300px;*/
+	height: auto;
+	float: left;
+	background-color: #72C29B;
+	padding: 10px;	
+	margin: 10px;
+}
+
+footer {
+	clear: both;
+	width: 1160px;
+	height: 70px;
+	background-color: #C4C4C4;
+	padding: 10px;
+	margin: 10px;
+}
+
+/* Regole CSS per l'evidenziazione */
+mark {
+      background-color: yellow;
+      color: #000;
+}
+
+/* Regole CSS per "focus" e "autofocus" */
+:focus, textarea:focus, select:focus {
+   border:1px solid #FF0000;
+   -webkit-box-shadow:0 0 6px #FF0000;	/* compatibilità con Safari */
+   -moz-box-shadow:0 0 5px #FF0000;	/* compatibilità con Firefox */
+   box-shadow: 0 0 5px #FF0000;	/* 0 e 0 spostamento ombra h e v, 5px sfocatura, #FF0000 colore */
+   outline:none;
+}

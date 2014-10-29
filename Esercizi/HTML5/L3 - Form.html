@@ -1,0 +1,180 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 E' ora possibile creare un FORM accattivante e funzionale senza dover per forza ricorrere a noiosi codici JavaScript esterni.
+	 Funzionamento form: l’utente compila tutti i campi richiesti, il browser li individua, li "cattura" e li invia al web server.
+	 Una volta arrivati al web server, i dati vengono processati da un linguaggio lato server che restituirà l’output opportuno al
+	 browser e quindi all’utente.
+	 - <form>
+	 - <fieldset> divide il form in sezioni logiche
+	 - "placeholder": segnaposto (indicano all'utente come inserire i valori), vengono ignorati dai browser che non li supportano
+	 - "autofocus": indica su quale oggetto è presente il focus al caricamento della pagina (regole definite nel CSS)
+
+	 La VALIDAZIONE di un form avviene sia lato "client" (browser) che lato "server" (la più importante per difenderci da malintenzionati)
+	 Per validare un form lato client sono presenti nuovi e semplici attributi in HTML5:
+	 - "required": definisce un campo obbligatorio
+	 - "optional": definisce un campo opzionale
+	 - "valid" e "invalid": si riferiscono all’aspetto dei campi, rispettivamente validi ed invalidi, dopo che l’utente ha inviato il form
+	 - "in-range" e "out-of-range": si riferiscono agli attributi min e max che limitano i numeri ad uno specifico range
+	 - "pattern": percorso che serve da confronto con quello inserito dall’utente:
+	 	- ^[1-9][0-9]{1,2}: ^ indica il primo carattere della linea che comprenderà i numeri [1-9]. Poi accetteremo 1 o 2 caratteri, {1,2}, compresi tra [0-9]
+
+	 Miglioramento del tag <input> a cui sono stati aggiunti degli attributi che ne specificano il "type" per aiutare la validazione:
+	 - "email": campo email
+	 - "url": indirizzi web (<input id=”indirizzo” type="url">)
+	 - "search": campi dediti alla ricerca di contenuti (<input id="ricerca" type="search">)
+	 - "number": campi con numeri (<input id="a" type="number" min="1" max="100" step="0.001">)
+	 - "range": inserisce una barra di selezione (ad es. da 0 a 10 avremo 0<input type="range" min="1" max="10" value="3">10)
+	 - "date": produce un calendario nel range di date specificato (<input type="date" min="2014-04-18" max="2014-04-28">)
+	 - "tel": numeri telefonici (<input id="telefono" type="tel">)
+	 - "color": mostra un popup con il colorpicker per la scelta del colore (<input id="colore" type="color">)
+
+	 Altri elementi
+	 - <datalist> crea un campo contenente una lista di valori tra cui scegliere
+	 - <progress> crea una barra di progressione
+	 - <meters> barra che visualizza un valore preciso associato ad un altrettanto precisa scala reale
+	 Entrambe le barre possono essere associate a del codice JavaScript che ne modifica dinamicamente il movimento
+	 - "contentEditable": permette di rendere un campo editabile
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L3 - Form</title>
+	<link href="css/stile2.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+			
+	<script type="text/javascript">
+		// Javascript che regola il funzionamento del campo "contentEditable"
+		function iniziaModifica() {
+	    	// Seleziono l’id dell’elemento e lo rendo editabile
+	    	var element = document.getElementById("contenutoModificabile");
+	    	element.contentEditable = true;
+		}
+		function terminaModifica() {
+	    	// Seleziono l’id dell’elemento e lo rendo NON editabile
+	    	var element = document.getElementById("contenutoModificabile");
+	    	element.contentEditable = false;
+		}
+		
+		// Javascript che regola il funzinoamento del campo "designModel"
+		function iniziaModifica_1() {
+		    // Seleziono l’id dell’elemento e lo rendo editabile
+		    var editor = document.getElementById("paginaModificabile");
+		    editor.contentWindow.document.designMode = "on";
+		}
+		function terminaModifica_1() {
+		    // Seleziono l’id dell’elemento e lo rendo NON editabile
+		    var editor = document.getElementById("paginaModificabile");
+		    editor.contentWindow.document.designMode = "off";
+		    // Mostro l'iframe modificato
+		    var htmlDisplay = document.getElementById("paginaModificata");
+		    htmlDisplay.textContent = editor.contentWindow.document.body.innerHTML;
+		}
+	</script>
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section>
+		  <form>
+			  <fieldset>
+				  <legend>Dettagli contatto</legend>
+				  <label for="nome">Nome <em>*</em></label>
+				  <input id="nome" placeholder="Nome Cognome"><br/>	<!-- esempio di segnaposto (placeholder) -->
+				  <label for="telefono">Telefono</label>
+				  <input id="telefono" placeholder="(xxx) xxx-xxxxxxx" autofocus><br/>	<!-- esempio di "autofocus"-->
+				  <label for="email">Email <em>*</em></label>
+				  <input id="email" placeholder="esempio@mail.xxx" required type="email"><br/>	<!-- esempio di "required" e "type"-->
+		      </fieldset>
+			  
+		      <fieldset>
+		      	  <legend>Informazioni personali</legend>
+				  <label for="eta">Et&agrave; <em>*</em></label>
+				  <input id="eta" pattern="^[1-9][0-9]{1,2}"><br/>	<!-- esempio di "pattern" -->
+				  <label for="sesso">Sesso</label>
+				  <select id="sesso">
+					  <option value="femminile">femminile</option>
+				      <option value="maschile">maschile</option>
+				  </select><br/>
+				  <label for="note">Perch&eacute; vuoi essere assunto/a?</label>
+				  <textarea id="note"></textarea>	  
+		      </fieldset>
+			  
+		      <fieldset>
+		     	  <legend>Seleziona la posizione per la quale concorri</legend>
+				  <label for="webdesigner">
+				  	  <input id="webdesigner" type="checkbox">Web Designer
+				  </label>
+				  <label for="webdeveloper">
+				      <input id="webdeveloper" type="checkbox">Web Developer
+				  </label>
+				  <label for="copy">
+				      <input id="copy" type="checkbox">Copywriter
+				  </label>
+				  <label for="graphic ">
+				      <input id="graphic" type="checkbox">Graphic Designer
+				  </label>
+				  <label for="marketing ">
+				      <input id="marketing" type="checkbox">Marketing
+				  </label>
+			  </fieldset>
+		  </form>
+		  
+		  <progress value=”20” max=”200”></progress>	<!-- esempio di "progress" bar -->
+		  
+		  <meter min="3" max="30" value="8"></meter>	<!-- esempio di "meters" -->   
+	  </section>
+	  
+	  <!-- "contentEditable" -->
+	  <section>
+		  <button onclick="iniziaModifica()">inizia modifica</button>
+		  <button onclick="terminaModifica()">termina modifica</button>
+		  
+	  	  <div id="contenutoModificabile" contentEditable>	<!-- esempio di "contentEditable" -->
+	  		  Se vuoi, puoi modificare questo testo!
+	  	  </div>
+	  </section>
+	  
+	  <!-- "designModel" (N.B. in locale funziona solo su Firefox) -->
+	  <section>
+		  <h1>pagina modificabile</h1>
+		  <iframe id="paginaModificabile" src="pagina_modificabile.html"></iframe>
+		  <br/>
+		  <button onclick="iniziaModifica_1()">inizia modifica</button>
+		  <button onclick="terminaModifica_1()">termina modifica</button>
+		  <h1>pagina modificata</h1>
+		  <div id="paginaModificata"></div>
+	  </section>
+	
+	</article>
+	
+	<aside>
+		<form>
+			<fieldset>
+				<!-- esempio di "datalist" -->
+				<legend>Qual è il tuo colore preferito?</legend>
+				<select id="colorePreferito" list=”coloreScelta”>
+				<datalist id="coloreScelta">
+					<option label="nero" value="nero">
+		   			<option label="bianco" value="bianco">
+		   			<option label="rosso" value="rosso">
+		   			<option label="giallo" value="giallo">
+		   			<option label="verde" value="verde">
+		    		<option label="blu" value="blu">
+				</datalist>
+			</fieldset>
+		</form>
+	</aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

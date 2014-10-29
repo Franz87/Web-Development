@@ -1,0 +1,58 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 - Compatibilità con i browser: sito web "www.caniuse.com" + codice CSS
+	 - Statistiche dei browser: sito web "www.statcounter.com"
+	 - Nuovo doctype + struttura base (tag <html>, <head>, <body> sono diventati opzionali)
+	 - Struttura: <header> e <footer>
+				  <article> blocco nel quale posso utilizzare altri elementi strutturali (sostituisce il <div>)
+				  <section> generica sezione del documento (ad es. un capitolo all'interno di un articolo)
+				  <aside> colonna laterale che ospita il contenuto correlato a quello principale
+	 			  <nav> racchiue all'interno una lista di link, generalmente legati alla navigazione principale
+	 - Immagini e outlines:
+				  <figure> isola in maniera più specifica le immmagini relative al testo presente in una pagina
+	 			  <figcaption> didascalia riferita all'immagine
+				  <hgroup> racchiude tag di intestazione <h1>, <h2>, ... utile a creare una mappatura del sito
+						   utilizzabile poi dai motori di ricerca
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>Prova Html</title>
+	<link href="css/stile.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section> section
+		  <p contenteditable="true" id="paragrafo">cicciobello</p>
+	  </section>
+	  
+	  <section>
+		  <figure class=imgSx>
+			  <img src=imgs/immagine.jpg>
+		  <figcaption>Questa è la didascalia dell’immagine, una descrizione dell’immagine stessa.</figcaption>
+	      </figure>
+		  <p>Nulla quis ante ut mi hendrerit tincidunt. Nulla hendrerit ornare mi, in sollicitudin tortor molestie at. Cras mattis, quam quis euismod vulputate, ex lectus laoreet ipsum, eget tristique augue tellus vel neque. Nulla facilisi. Mauris tempus in augue a pretium. In eleifend dui quis faucibus venenatis. Phasellus pellentesque porta posuere. Sed in eros pulvinar, tempor massa sit amet, suscipit ligula. Mauris quam dolor, feugiat sagittis placerat vel, volutpat sed dui. In luctus risus non lacinia lacinia. Nulla ullamcorper augue sed lorem cursus varius. In hac habitasse platea dictumst. Suspendisse vulputate arcu nec justo condimentum eleifend. Maecenas tempus lacus vel purus maximus vehicula. Aenean iaculis sapien fermentum malesuada pharetra. Nullam elit mauris, vehicula ut malesuada ac, auctor a odio. Morbi et lectus placerat, varius risus a, dignissim ipsum.</p>		  
+	  </section>
+	
+	</article>
+	
+	<aside> aside 
+		<button type="button" onclick="getElementById('paragrafo').setAttribute('hidden','');">NASCONDI</button>
+		<button type="button" onclick="getElementById('paragrafo').removeAttribute('hidden','');">RIVELA</button>
+	</aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	
