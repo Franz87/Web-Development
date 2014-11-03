@@ -1,0 +1,122 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 Creiamo un player in JavaScript capace di interagire con il tag <video>
+
+	 ********** PLAYER PERSONALIZZATI **********
+	 Ogni player che si rispetti necessita di almeno tre pulsanti in grado di gestire la riproduzione: play, pausa e stop.
+	 Questi pulsanti andranno ovviamente collegati al relativo codice JavaScript che agirà sul nostro tag <video>.
+	 *******************************************
+
+	 ********** PLAYER ESISTENTI **********
+	 Creare e gestire un player personalizzato può essere difficoltoso e molto spesso poco efficace.
+	 Per questo motivo è consigliabile appoggiarsi a player già esistenti e testati come: videoJS e jPlayer.
+	 I vantaggi di utilizzare questi player sono tanti:
+	 - utilizzare codice ampiamente testato, pulito e affidabile (basti pensare che vengono adoperati in siti prestigiosi come quello
+	   della bbc, di aljazeera o di vine);
+	 - avere accesso a funzionalità altrimenti complesse da sviluppare manualmente, tra cui playlist, sottotitoli, skins personalizzabili,
+	   flash fallback, etc.;
+	 - disporre di una documentazione ufficiale e di forum di supporto sempre vivaci e frequentati;
+	 *******************************************
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L5 - Player Video</title>
+	<link href="css/stile3.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		
+	<script type="text/javascript">
+		function play() {
+	    	video.play();
+	    }
+	
+		function pause() {
+	   	 	video.pause();
+		}
+		
+		function stop() {	// impone la pausa per poi settare il progresso della riproduzione a 0 tramite il metodo currentTime.
+	   	 	video.pause();
+	   	 	video.currentTime = 0;
+		}
+		
+		function progressUpdate() {	// visualizza la progress bar per indicare la durata del video
+			var pBar = document.getElementById('durata');
+		    video.addEventListener('timeupdate', function() {
+		    	var percent = Math.floor((100 / video.duration) * video.currentTime);
+		      	pBar.value = percent;
+		   	}, false);
+		}
+		
+		function slow() {	// riproduzione "slow"
+		   video.play();
+		   video.playbackRate = 0.5;
+		}
+		
+		function normal() {	// riproduzione "normal"
+		   video.play();
+		   video.playbackRate = 1;
+		}
+		
+		function fast() {	// riproduzione "fast"
+		   video.play();
+		   video.playbackRate = 2;
+		}
+				
+	</script>
+	
+	<!-- Player "videoJS": includiamo file CSS e JavaScript facendo riferimento a file CDN -->
+	<link href="http://vjs.zencdn.net/4.10/video-js.css" rel="stylesheet">
+	<script src="http://vjs.zencdn.net/4.10/video.js"></script>
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section> Player Personalizzato
+		  <video height="480" width="640" id="video" ontimeupdate="progressUpdate()">	<!-- chiama la fx progressUpdate() per mostrare la progress bar -->
+		       <source src="video/pingu.mp4" type="video/mp4">
+		       <source src="video/pingu.ogv" type="video/ogg">
+		  </video>
+		  
+		  <br>
+		  
+		  <button onClick="play()">play</button>	<!-- esempio pulsante "play" collegato alla fx play() definita nello script -->
+		  <button onClick="pause()">pause</button>	<!-- esempio pulsante "pause" collegato alla fx pause() definita nello script -->
+		  <button onClick="stop()">stop</button>	<!-- esempio pulsante "stop" collegato alla fx stop() definita nello script -->
+		  
+		  <br>
+		  
+		  <progress id="durata" max="100" value='0'></progress>	<!-- progress bar per indicare la durata del video -->
+		  
+		  <button onClick="slow();">rallenta</button>	<!-- riproduzione "slow" -->
+		  <button onClick="normal();">normale</button>	<!-- riproduzione "normale" -->
+		  <button onClick="fast();">velocizza</button>	<!-- riproduzione "veloce" -->	  
+	  </section>
+	  
+	  <section> Player videoJS	<!-- Esempio di Player già esistente (personalizzabile sul sito di "videoJS") -->
+		  <video id="video_prova" class="video-js vjs-default-skin vjs-big-play-centered" controls
+		   	preload="auto" width="640" height="264" poster="MY_VIDEO_POSTER.jpg"
+		   	data-setup='{"example_option":true}'>
+		   	  <source src="video/pingu.mp4" type='video/mp4'>
+		   	  <source src="video/pingu.webm" type='video/webm'>
+		   	  <source src="video/pingu.ogv" type='video/ogg'>
+		   	  <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+		  </video>
+	  </section>
+	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

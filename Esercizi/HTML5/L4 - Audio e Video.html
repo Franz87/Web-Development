@@ -1,0 +1,151 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 E' fondamentale avere un supporto nativo per i contenuti multimediali (90% del traffico i rete), per questo motivo sono stati
+	 implementati i nuovi tag <audio> e <video>.
+
+	 Strade alternative:
+	 - tag <embed>: attraverso il supporto di Windows Media Player e Apple QuickTime aggiunge un player all'interno del sito. Non
+	   				è possibile gestire il buffering e non si hanno certezze sul supporto dei browser
+	 - plugin esterni (Adobe Flash o MS Silverlight): ma Apple ha escluso Flash e inoltre occorrerebbe scrivere gran quantità di
+													  codice all'interno dei tag <embed> e <object>
+
+	 Non esiste un vero e proprio formato standard sul web e quindi ogni browser si comporta in maniera differente.
+
+	 Principali formati: mp3, ogg vorbis, wav, H264, ogg theora, webm
+	 Appare quindi chiara la necessità di utilizzare contemporaneamente più di un formato per coprire interamente il panorama di
+	 browser e sistemi operativi ai quali ci si rivolge. Ciò può essere ottenuto tramite l’utilizzo del tag <source> che va racchiuso
+	 all’interno dei tag <audio> e/o <video>.
+
+	 ********** AUDIO **********
+	 Per inserire un contenuto audio si utilizza il tag <audio> con vari attributi:
+	 - src: sorgente del file da riprodurre
+	 - controls: indica al browser di mostrare il player predefinito con i relativi controlli
+	
+	 Il tag <audio> supporta tre attributi:
+	 - preload: gestione dei download (auto, metadata o none)
+	 - autoplay: permette al file di essere riprodotto automaticamente (senza click dell'utente)
+	 - loop: manda in ciclo infinito il file
+
+	 Utilizzando il tag <source> (per i motivi accennati nella sezione ‘formati e compatibilità’) possiamo utilizzare più formati
+	 ***************************
+	
+	 ********** VIDEO **********
+	 Per inserire un contenuto video si utilizza il tag <video> con vari attributi:
+	 - src: sorgente del file da riprodurre
+	 - controls: indica al browser di mostrare il player predefinito con i relativi controlli
+
+	 Il tag <video> supporta tre attributi:
+	 - preload: gestione dei download (auto, metadata o none)
+	 - autoplay: permette al file di essere riprodotto automaticamente (senza click dell'utente)
+	 - loop: manda in ciclo infinito il file
+	 - height/width: specificano altezza e larghezza del player video
+	 - poster: permette di specificare l’immagine d’anteprima che verrà mostrata prima dell’avvio del filmato
+
+	 Per ritenerci parzialmente soddisfatti dovremmo utilizzare un mp4 affiancato da un ogv (in alternativa anche il webm in sostituzione
+	 dell’ogv tenendo conto, però, che non risulterà compatibile con alcune vecchie versioni di Firefox e Opera) e da un cosiddetto
+	 flash fallback.
+	 ***************************
+
+	 Letteralmente il termine inglese fallback vuol dire ripiego, scorta ed è con questo vocabolo che si indica la porzione di codice a
+	 cui i browser che non supportano l’HTML5, fanno riferimento. Nel nostro caso, continuando a parlare del tag <video>, potrebbe essere
+	 utile inserire un messaggio che avvisi l’utente di aggiornare il proprio browser
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L4 - Audio e Video</title>
+	<link href="css/stile3.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section>
+		  <!-- AUDIO -->
+		  <p>Ascolta il verso del cane</p>
+		  <cite>il verso del cane si chiama ‘abbaiare’</cite>
+		  <audio src="audio/pingu.mp3" controls></audio>	<!-- esempio di "src" e "controls" -->
+		  
+		  <br>
+		  
+		  <audio src="audio/pingu.mp3" controls loop></audio>	<!-- esempio di "loop" -->
+		  
+		  <br>
+		  
+		  <audio src="audio/pingu.mp3" controls preload="auto"></audio>	<!-- preload "auto": subito disponibile all'utente -->
+		  <audio src="audio/pingu.mp3" controls preload="metadata"></audio>	<!-- preload "metadata": carica solo i dati estraibili dal file (durata) -->
+		  <audio src="audio/pingu.mp3" controls preload="none"></audio>	<!-- preload "none": impedisce il preload -->
+		  
+		  <br>
+		  
+		  <audio src="audio/pingu.mp3" controls autoplay></audio>	<!-- esempio di "autoplay" -->
+		  
+		  <br>
+		  
+		  <!-- esempio tag <source> -->
+		  <audio controls>
+		     <source src="audio/pingu.mp3" type="audio/mp3">	<!-- Chrome, Safari, Internet Explorer -->
+		     <source src="audio/pingu.mp3" type="audio/ogg">	<!-- Firefox, Opera -->
+		  </audio>
+	  </section>
+	  
+	  <section>
+		  <!-- VIDEO -->
+		  <p>Un video di wi.u’ upset&reg;</p>
+		  <video src="video/pingu.mp4" controls></video>	<!-- esempio di "src" e "controls" -->
+		  
+		  <br>
+		  
+		  <video src="video/pingu.mp4" loop></video>	<!-- esempio di "loop" -->
+		  
+		  <br>
+		  
+		  <video src="video/pingu.mp4" autoplay></video>	<!-- esempio di "autoplay" -->
+		  
+		  <br>
+		  
+		  <video src="video/pingu.mp4" preload="auto"></video>	<!-- preload "auto": subito disponibile all'utente -->
+		  <video src="video/pingu.mp4" preload="metadata"></video>	<!-- preload "metadata": carica solo i dati estraibili dal file (durata) -->
+		  <video src="video/pingu.mp4" preload="none"></video>	<!-- preload "none": impedisce il preload -->
+		  
+		  <br>
+		  
+		  <video src="video/pingu.mp4" height="300" width="400"></video>	<!-- esempio di "height" e "width" -->
+		  
+		  <br>
+		  
+		  <video src="video/pingu.mp4" poster="video/poster.jpg"></video>	<!-- esempio di "poster" -->
+		  
+		  <br>
+		  
+		  <!-- esempio tag <source> -->
+		  <video height="480" width="640">
+		       <source src="video/pingu.mp4" type="video/mp4">	<!-- Chrome, Safari, Internet Explorer -->
+		       <source src="video/pingu.ogv" type="video/ogv">	<!-- Firefox, Opera -->
+			   <p>Il tuo browser non supporta i video HTML5, per favore aggiornalo.</p>	<!-- esempio di fallback -->
+			   
+			   <!-- ulteriore esempio di fallback che andrà a caricare la versione swf del video -->
+			   <object width="640" height="480" type="application/x-shockwave-flash" data="video/wiiu_upset.swf">
+				   <param name="movie" value="video/wiiu_upset.swf" />
+			       <param name="flashvars" value="controlbar=over&amp;file=video/wiiu_upset.mp4" />
+			   </object>   
+		  </video>
+	  </section>
+	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

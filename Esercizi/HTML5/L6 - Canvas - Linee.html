@@ -1,0 +1,120 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 Uno degli obiettivi dell’HTML5 è facilitare l’implementazione di applicazioni interattive. Una delle più importanti tra queste
+	 è canvas: una tela virtuale attraverso la quale è possibile esprimere la propria vena artistica.
+	 
+	 Canvas richiede il supporto di Javascript. Fino a poco tempo fa era impensabile realizzare cose del genere senza l'ausilio di
+	 plugin installati nel browser come Flash.
+
+	 ********** LINEE DRITTE **********
+	 1 - Inseriamo il tag <canvas> nel body. Qui specifichiamo altezza, larghezza e, più importante tra tutti, l’ID che ci servirà come
+	 riferimento nel codice JavaScript. Fate attenzione a non incorrere nell’errore di dichiarare le proprietà width ed height all’interno
+	 del foglio CSS anziché nel markup.
+	 2 - Occorre poi settare lo stile nel foglio di stile CSS, utilizzando la parola chiave "canvas".
+	 3 - Implementare il codice Javascript che si agganci all'ID del canvas
+	 Le possibili azioni che si possono utilizzare per le linee dritte sono:
+	 - moveTo(x,y): per settare il punto di partenza dal quale disegnare (coordinate x e y);
+	 - lineTo(x,y): per definire il punto di arrivo al quale arriverà la nostra linea;
+	 - stroke(): per disegnare realmente il segmento precedentemente definito;
+	 **********************************
+
+	 ********** LINEE CURVE **********
+	 E' possibile disegnare linee curve tramite le funzioni: arc(), arcTo(), bezierCurveTo(), e quadraticCurveTo().
+	 
+	 1 - Il metodo più intuitivo e facile da imparare inizialmente è "arc" che si occupa di disegnare un arco basato su una porzione di cerchio.
+	 2 - Gli altri metodi, arcTo, bezierCurveTo, e quadraticCurveTo (ovvero le cosiddette ‘curve per punti’) possono risultare un po’ più ostici.
+		 Per tracciare curve in canvas sono disponibili vari tools online come:
+		 - http://www.victoriakirst.com/beziertool/
+		 - http://blogs.sitepointstatic.com/examples/tech/canvas-curves/bezier-curve.html
+	 **********************************
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L6 - Canvas - Linee</title>
+	<link href="css/stile3.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		
+	<!-- Javascript utilizzato dal "canvas" -->	
+	<script type="text/javascript">
+		window.onload = function() {
+			
+			// Linea Dritta
+			var canvas = document.getElementById("provaLineaDritta");	// aggancio all'ID del canvas
+			var context = canvas.getContext("2d");	// metodo che specifica il contesto bidimensionale
+			context.moveTo(30,30);					// punto di partenza
+			context.lineTo(100,100);				// punto finale
+			context.lineWidth = 10;					// larghezza linea 
+			//context.strokeStyle = "rgb(6,176,146)";	// colore linea (RGB)
+			context.strokeStyle = "#06B092";		// colore linea (HEX)
+			context.stroke();
+			
+			// Linea Curva 1 - arc()
+			var canvas_2 = document.getElementById ("provaLineaCurva");
+			var context_2 = canvas_2.getContext("2d");
+			var centerX = 300;	// centro X
+			var centerY = 150;	// centro Y
+			var raggio = 100;	// raggio in pixel
+			var inizioAngolo = 1.00 * Math.PI;	// inizio dell'arco
+			var fineAngolo = 2.00 * Math.PI;	// fine dell'arco
+			context_2.arc (centerX, centerY, raggio, inizioAngolo, fineAngolo);	// traccia l'arco usando le variabili create
+			context_2.stroke() ;
+		
+			// Linea Curva 2 - bazierCurveTo (due punti - semplice)
+			var canvas_3 = document.getElementById("provaLineaCurva_2");
+			var context_3 = canvas_3.getContext("2d");
+			context.moveTo(62, 142);
+			var punto1_x = 87;	// primo punto x
+			var punto1_y = 32;	// primo punto y
+			var punto2_x = 339;	// secondo punto x
+			var punto2_y = 480;	// secondo punto y
+			var ultimoPuntoX = 376;	// ultimo punto x
+			var ultimoPuntoY = 29;	// ultimo punto y 
+			context_3.bezierCurveTo(punto1_x, punto1_y, punto2_x, punto2_y, ultimoPuntoX, ultimoPuntoY);	// traccia la curva
+			context_3.stroke();
+		
+			// Linea Curva 3 - bazierCurveTo (più punti - complessa)
+			var canvas_4 = document.getElementById("provaLineaCurva_3");
+			var context_4 = canvas_4.getContext("2d");
+			var xoff = 100;
+			var yoff = -50;
+			context_4.beginPath();
+		  	context_4.moveTo(257 + xoff, 196 + yoff);
+		  	context_4.bezierCurveTo(247 + xoff, 185 + yoff, -30 + xoff, 238 + yoff, 124 + xoff, 249 + yoff);
+		  	context_4.bezierCurveTo(180 + xoff, 253 + yoff, 14 + xoff, 16 + yoff, 235 + xoff, 246 + yoff);
+		  	context_4.stroke();
+		}
+	</script>
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section> Linee Dritte<br>
+		  <canvas id="provaLineaDritta" width="600" height="300"></canvas>	<!-- esempio <canvas>, ID, width e height -->
+	  </section>
+	  
+	  <section> Linee Curve<br>
+		  <canvas id="provaLineaCurva" width="600" height="300"></canvas>	<!-- esempio <canvas>, linea dritta -->
+			  
+		  <canvas id="provaLineaCurva_2" width="600" height="300"></canvas>	<!-- esempio <canvas>, linea curva semplice -->
+			  
+		  <canvas id="provaLineaCurva_3" width="600" height="300"></canvas>	<!-- esempio <canvas>, linea curva complessa -->
+	  </section>
+	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	
