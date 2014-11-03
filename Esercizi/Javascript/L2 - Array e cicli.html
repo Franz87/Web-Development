@@ -1,0 +1,65 @@
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>L2 - Array e cicli</title>
+		
+</head>
+	
+<body>
+	<script type="text/javascript">
+		//###########################################  ARRAY  ################################################
+		
+		var numeri = new Array();		// dichiarazione array (non serve dichiarare subito la dimensione)
+		var numeri_1 = new Array(18);	// dichiarazione array (con dimensione)
+		var numeri_2 = new Array("Rossi", "Gialli", "Verdi");	// dichiarazione array
+		// Un Array può contenere anche valori differenti (int, float, string ...)
+		
+		for(i = 0; i < 10; i++)
+			numeri[i] = Math.random();	// riempio DINAMICAMENTE l'array 
+			
+		for(i = 0; i < 10; i++)
+			document.write("[" + i + "]" + numeri[i] + "<br>");
+			
+		document.write("------------------------------<br>");
+			
+		numeri[10] = 999;	// è possibile aggiungere un elemento successivamente all'interno dell'array (dinamicamente)
+							// se si saltano delle posizioni viene tornato il valore "undefined" 
+			
+		for(i = 0; i < 11; i++)
+			document.write("[" + i + "]" + numeri[i] + "<br>");
+		
+		document.write("------------------------------<br>");
+		
+		for(i = 0; i < 11; i++)
+			if(numeri[i] != null)	// stampo solo i valori corretti (salto l'eventuale valore undefined)
+				document.write("[" + i + "]" + numeri[i] + "<br>");
+				
+		//##########################################  CICLO WHILE  #############################################
+		
+		document.write("------------------------------<br>");
+		
+		var nomi = new Array("Rossi", "Gialli", "", "Verdi");
+		
+		var i = 0;
+		while(nomi[i] != "")
+			document.write(nomi[i++] + "<br>");	// stampa l'array finché non trova una stringa vuota
+		
+		// Il ciclo do..while invece esegue le istruzioni almeno una volta prima di terminare
+		
+		//########################################  COSTRUTTO SWITCH  ##########################################
+		
+		document.write("------------------------------<br>");
+		
+		var colore = prompt("Qual è il tuo colore preferito?");
+		
+		switch(colore)
+		{
+			case "Giallo" : document.write("Come il sole!"); break;
+			case "Rosso" :
+			case "Arancio" : alert("Troppo violento"); colore = prompt("Dimmene un altro ..."); break;
+			default : document.write("Piace anche a me!"); document.write("... davvero ...");
+		}
+		
+	</script>
+</body>
+</html>
