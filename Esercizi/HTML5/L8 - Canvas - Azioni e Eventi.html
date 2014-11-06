@@ -1,0 +1,91 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 Per introdurre "azioni" ed "eventi" creiamo un rudimentale programma di disegno.
+	 
+	 # N.B. # In questo esempio è stato creato un file Javascript separato nel quale sono state definite le funzioni utilizzate, poi,
+              attraverso il tag <script>, il file è stato richiamato nel file HTML (come avviene per i fogli di stile)
+	
+	 ************** INTERFACCIA **************
+	 Occorre associare della zioni ad ogni possibile evento del mouse, in questo caso: "onMouseDown", "onMouseUp", "onMOuseOut" e "onMouseMove".
+	
+	 Per iniziare a utilizzare il programma, l’utente dovrà selezionare uno dei colori differenti dalla barra degli strumenti e definirne lo spessore.
+     Andremo a realizzare questi elementi attraverso dei semplici tag <img> clickabili.
+
+	 Creiamo quindi due funzioni "modificaColore" e "modificaSpessore".
+	 *****************************************
+
+	 **************** AZIONI *****************
+	 Definiamo nello script le azioni (funzioni) associate ad ogni evento del mouse
+	 - "inizioDisegno", "disegno" e "interrompoDisegno"
+	 *****************************************
+
+	 ************** SALVATAGGIO **************
+	 Ora che tutte le azioni utili al disegno vero e proprio sono state definite, possiamo creare le ulteriori due necessarie al salvataggio e alla pulizia.
+	 *****************************************
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L8 - Canvas - Azioni e Eventi</title>
+	<link href="css/stile3.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		
+	<!-- richiama il file Javascript -->	
+	<script src="js/paint_program.js"></script>
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> Programma di Disegno
+	  
+	  <section>
+		  <!-- barra strumenti - seleziona colore -->
+		  <!-- L’attributo onclick del tag <img> richiama una funzione JavaScript denominata "modificaColore".
+			   Questa funzione dovrà accettare due parametri: il colore e il riferimento all’icona cliccata. -->
+		  <div class="strumenti">
+			  seleziona colore<br>
+		      <img id="rosso" src="imgs/rosso.jpg" alt="rosso" onclick="modificaColore('rgb(203,17,18)', this)">
+		      <img id="blu" src="imgs/blu.jpg" alt="blu" onclick="modificaColore('rgb(23,17,203)', this)"> 
+		      <img id="verde" src="imgs/verde.jpg" alt="verde" onclick="modificaColore('rgb(12,167,78)', this)">
+		  </div>
+		  
+		  <!-- barra strumenti - seleziona spessore -->
+		  <div class="strumenti">
+		      seleziona spessore<br>
+		      <img src="imgs/piccolo.jpg" alt="piccolo" onclick="modificaSpessore(1, this)">
+		      <img src="imgs/medio.jpg" alt="medio" onclick="modificaSpessore(5, this)"> 
+		      <img src="imgs/grande.jpg" alt="grande" onclick="modificaSpessore(10, this)">
+		  </div>
+		  
+		  <!-- barra strumenti - canvas -->
+		  <div class="contenitoreCanvas">
+		      <canvas id="progDisegno" width="500" height="300"></canvas>
+		  </div>
+		  
+		  <!-- barra strumenti - salva/pulisci -->
+		  <div class="strumenti">
+		      <button onclick="salva()">salva</button>
+		      <button onclick="pulisci()">pulisci</button>
+		      <div id="boxSalvataggio">
+		          <img id="imgSalvataggio"><br>
+		          Premi il tasto destro per salvare
+		      </div>
+		  </div>
+		  
+	  </section>
+	  	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

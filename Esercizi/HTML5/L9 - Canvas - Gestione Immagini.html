@@ -1,0 +1,143 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 Tecniche avanzate per gestire le ombre, i pattern, i gradient e la modifica di immagini.
+
+	 ************** MODIFICA IMMAGINI **************
+	 Varie operazioni eseguibili sulle immagini:
+	 - Disegno
+	 - Taglio (crop)
+	 - Ombre
+	 
+	 E' possibile riempire le forme in altri modi oltre al colore solido e trasparente
+	 - Pattern: utilizzo immagine di sfondo
+	 - Gradient: Lineari o Radiali
+	 ***********************************************
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L9 - Canvas - Gestione Immagini</title>
+	<link href="css/stile3.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		
+	<!-- richiama il file Javascript -->	
+	<script src="js/gestione_img.js"></script>
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <!-- DISEGNARE IMMAGINI -->
+	  <section> Disegnare Immagini <br>
+		  <canvas id="canvas_img_1" height="300px" width="600px" style="margin:10px; border: solid 1px #000"></canvas>
+
+		  <script>
+		  	 var canvas_1 = document.getElementById("canvas_img_1");
+		  	 var ctx_1 = canvas_1.getContext("2d");
+			 // Creiamo ora un elemento immagine che avvierà una funzione, la quale conterrà il metodo "drawImages"
+			 // I parametri passati al metodo "drawImages" ci permettono di modificare rispettivamente le coordinate di partenza, la larghezza e l’altezza
+			 var img_1 = document.createElement('img');
+		  	 img_1.onload = function() {
+		  	    ctx_1.drawImage(this, 0, 0, 201, 251);	// img che, a partire dalle coordinate (0, 0), misurerà 201px di larghezza e 251px di altezza.
+		  	 }
+		  	 img_1.src = "imgs/nodo.jpg";
+		  </script>
+	  </section>
+	  
+	  <!-- TAGLIARE IMMAGINI -->
+	  <section> Tagliare Immagini (crop) <br>
+		  <canvas id="canvas_img_2" height="300px" width="600px" style="margin:10px; border: solid 1px #000"></canvas>
+		  
+		  <script>
+		  	 var canvas_2 = document.getElementById("canvas_img_2");
+		  	 var ctx_2 = canvas_2.getContext("2d");
+			 // I parametri sx, sy, swidth e sheight; essi rappresentano rispettivamente le coordinate di partenza, la larghezza e l’altezza dell’immagine
+			 // visualizzata a dispetto dell’originale.
+		  	 var img_2 = document.createElement('img');
+		  	 img_2.onload = function() {
+		  	    ctx_2.drawImage(this, 100, 0, 201, 251, 0, 0, 201, 251);	// context.drawImage(this, sx, sy, swidth, sheight, x, y, width, height);
+		  	 }
+		  	 img_2.src = "imgs/nodo.jpg";
+		  </script>
+	  </section>
+	  
+	  <!-- OMBRE -->
+	  <section> Ombre <br>
+		  <canvas id="canvas_ombra" height="300px" width="600px" style="margin:10px; border: solid 1px #000"></canvas>
+		  
+		  <script>
+		  	 var canvas_3 = document.getElementById("canvas_ombra");
+		  	 var ctx_3 = canvas_3.getContext("2d");
+		  	 ctx_3.rect(10,10,300,200);	// disegno rettangolo
+		  	 ctx_3.fillStyle = "#E54028";	// riempio con colore
+		  	 ctx_3.shadowColor = "#BBBBBB";	// colore ombra
+		  	 ctx_3.shadowBlur = 15;	// sfocatura ombra (0 = nitida --> x = sfocata)
+		  	 ctx_3.shadowOffsetX = 10;	// determina la grandezza dell’ombra in pixel, a destra
+		  	 ctx_3.shadowOffsetY = 10;	// determina la grandezza dell’ombra in pixel, in basso
+		  	 ctx_3.fill();
+		  </script>
+	  </section>
+	  
+	  <!-- PATTERN -->
+	  <section> Pattern <br>
+		  <img src="imgs/pattern.png" id="img_pattern">	<!-- img originale -->
+		  <!-- risultato del pattern in Canvas (non funiona su questa versione di Chrome) -->
+		  <canvas id="canvas_pattern" height="300" width="600px" style="margin:50px; border: solid 1px #000"></canvas>
+		  
+		  <script>
+		  	 var canvas_4 = document.getElementById("canvas_pattern");
+		  	 var ctx_4 = canvas_4.getContext("2d");
+			 // Creiamo due variabili, "img" e "pattern", associate all’immagine e al pattern che stiamo creando da essa
+		  	 var img_3 = document.getElementById("img_pattern");
+		  	 var pattern = ctx_4.createPattern(img_3, "repeat");
+			 // Attribuiamo al metodo "fillStyle" la variabile pattern appena creata invece di un solito colore solido
+		  	 ctx_4.fillStyle = pattern;
+		     ctx_4.rect(0, 0, canvas_4.width, canvas_4.height);
+		     ctx_4.fill();
+		  </script>
+	  </section>
+	  
+	  <!-- GRADIENT -->
+	  <section> Gradient <br>
+		  <canvas id="canvas_gradient" height="600px" width="600px" style="margin:50px; border: solid 1px #000"></canvas>
+		  
+		  <!-- Gradiente Lineare -->
+		  <script>
+		  	 var canvas_5 = document.getElementById("canvas_gradient");
+		  	 var ctx_5 = canvas_5.getContext("2d");
+		     var gradient_1 = ctx_5.createLinearGradient(120,0,300,0);
+		     gradient_1.addColorStop(0,"blue");
+		     gradient_1.addColorStop(.50,"red");
+		     gradient_1.addColorStop(1,"yellow");
+		     ctx_5.fillStyle = gradient_1;
+		     ctx_5.fillRect(20,20,400,150);
+		  </script>
+		  
+		  <!-- Gradiente Radiale -->
+		  <script>
+		  	 var ctx_6 = canvas_5.getContext("2d");
+		     var gradient_2 = ctx_6.createRadialGradient(180, 250, 10, 180, 250, 50);
+		     gradient_2.addColorStop(0,"blue");
+		     gradient_2.addColorStop(.50,"red");
+		     gradient_2.addColorStop(1,"yellow");
+		     ctx_6.fillStyle = gradient_2;
+		     ctx_6.fillRect(20,200,400,150);
+		  </script>
+	  </section>
+	  	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	
