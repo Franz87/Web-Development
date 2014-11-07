@@ -5,6 +5,23 @@
 			  La formattazione standard Orario è: HH:MM+00:00
 	 - <mark> evidenzia il testo racchiuso in esso
 	 - <output> segnaposto che il tuo JavaScript può utilizzare per visualizzare delle informazioni frutto di calcolo
+
+	 *********** INPUT TYPE "DATA" ***********
+	 Per l'inserimento automatico di date e orari è possibile usare i seguenti nuovi comandi all'interno di un tag <input>:
+	 - date: crea un "datepicker" per la scelta della data
+	 - time: crea un "datepicker" per la scelta dell'orario
+	 - datetime-local: crea un "datepicker" per la scelta di data e orario
+	 
+	 E' possibile inoltre aggiungere i seguenti attributi:
+	 - min: minimo valore accettato
+	 - max: massimo valore accettato
+	 - step: granulosità dei valori accettati (a passi di 1,2 ore o 20,30 min o 5,10 secondi ...) 
+	 *****************************************
+
+	 *********** INPUT TYPE "COLOR" ***********
+	 Per l'inserimento automatico di colori è possibile usare il seguente nuovo comando all'interno di un tag <input>:
+	 - color: crea un "colorpicker" per la scelta del colore
+	 *****************************************
 -->
  
 <!DOCTYPE html>	
@@ -48,6 +65,27 @@
 		       è un <mark>insieme di parole</mark>, correlate tra loro per costituire un'unità logico-concettuale.
 		  </p>
 		  
+	  </section>
+	  
+	  <section>
+		  <!-- Input type "data" -->
+		  Data da inserire<br>
+		  <input type="date" name="data">	<!-- esempio di "datapicker" con data -->
+		  
+		  <br>Orario da inserire<br>
+		  <input type="time" name="orario">	<!-- esempio di "datapicker" con orario -->
+		  
+		  <br>Data e orario da inserire<br>
+		  <input type="datetime-local" name="data-orario">	<!-- esempio di "datapicker" con data e orario -->
+		  
+		  <br>Data e orario da inserire (min, max, step)<br>
+		  <input type="datetime-local" step="360" min="2000-01-01" max="2014-12-31" name="data-orario">	<!-- esempio di "datapicker" con data, orario e attributi -->
+	  </section>
+	  
+	  <section>
+		  <!-- Input type "color" -->
+		  Inserisci un colore<br>
+	  	  <input type="color" name="colore"> <!-- esempio di "colorpicker" -->
 	  </section>
 	
 	</article>
