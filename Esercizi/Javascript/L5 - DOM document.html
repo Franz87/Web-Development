@@ -1,0 +1,73 @@
+<!--
+	*********** DOM - window.document ************
+	Consente di accedere a molti altri oggetti contenuti al suo interno
+	
+	Gerarchia:
+	windows -> document -> links[], anchors[], images[], forms[]
+														 forms[] -> checkbox, textarea, ...
+-->
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>L5 - DOM document</title>
+	
+	<script type="text/javascript">
+		//###########################################  WINDOW.DOCUMENT  ################################################
+		
+		
+	</script>		
+</head>
+	
+<body>
+	
+	<!-- Images[] -->
+	<img src="imgs/fanta-logo.png">	<!-- creo un immagine (di default in posizione 0) -->
+	<input type="button" value="ZOOM" onclick="document.images[0].width=200"> <!-- cliccando sul pulsante ingrandisco l'immagine -->
+	
+	<br>
+	
+	<!-- Script che assegna un colore ad una stringa -->
+	<strong>QUESTA SCRITTA STA PER ESSERE COLORATA</strong>
+	<script type="text/javascript">
+		scelta = prompt("Scegli un colore: V=Verde, R=Rosso, B=Blu");
+		
+		switch(scelta.toUpperCase())
+		{
+			case "V" : colore = "00ff00"; break;
+			case "R" : colore = "ff0000"; break;
+			case "B" : colore = "0000ff"; break;
+			
+			default : alert("Scelta non valida");
+		}
+		
+		window.document.fgColor = colore;	// cambia il colore del font
+		window.document.linkColor = colore;	// cambia il colore dei link
+		window.document.bgColor = "ffffff";	// cambia il colore del backgroud
+	</script>
+	
+	<!-- Script che a seconda che sia mattina (< 12) o pomeriggio (> 12) visualizza nel form una frase diversa -->
+	<!-- window -> document -> forms -->
+	<form name="dati" action="nopage.php" method="post">
+		Nome: <input name="nome" type="text" size="60" id="nome"><br>
+		Cognome: <input name="nome" type="text" size="60" id="cognome"><br>
+		<input name="Invia" type="submit" value="INVIA">
+	</form>
+	
+	<script type="text/javascript">
+		var dataOdierna;	// definisco la variabile
+		dataOdierna = new(Date);	// inizializzo la variabile di tipo Object Data
+		
+		alert(dataOdierna.getHours());	// visualizzao l'ora attuale
+		
+		if(dataOdierna.getHours() > 12)
+			document.getElementById("nome").value = "Buonasera";
+			// window.document.forms[0].elements[0].value = "Buonasera, ";	// seleziono l'elemento [0] del form [0] e gli assegno un valore
+			// window.document.dati.elements["nome"].value = "Buonasera";	// è possibile anche usare i nomi dei campi
+		else
+			document.getElementById("nome").value = "Buonasera";
+		
+		document.getElementById("nome").value += " per cortesia inserire il vostro nome";
+	</script>
+	
+</body>
+</html>

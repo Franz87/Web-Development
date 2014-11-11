@@ -1,0 +1,104 @@
+<!--
+	*********** DOM (Document Object Model) ************
+	Per interagire bene con browser e contenuto occorre raffrontarsi con il DOM.
+	DOM: rappresentazione gerarchica degli oggetti contenuti all'interno di una finestra del browser
+		 windows -> document -> links[], anchors[], images[], forms[]
+															  forms[] -> checkbox, textarea, ...
+				 -> history
+				 -> location
+
+	*********** "document" ************
+	Proprietà:
+	- innerHeight e innerWidth
+	Metodi:
+	- resizeBy(asseX, asseY): assegna altezze e larghezza della finestra
+	- setInterval(fx, x): valuta (ogni x ms) la funzione specificata, l'esecuzione è parallela al resto dello script
+	- clearInterval(x)
+	- open(URL, titolo, parametri opzionali): apre in sovrapposizione una nuova finestra
+
+	*********** "history" ************
+	Proprietà:
+	- length: proprietà che corrisponde al numero di pagine visitate da un'istanza del browser
+	Metodi:
+	- back(): torna alla pagina visitata precedentemente
+	- forward(): ritorna alla pagina seguente (non fa scattare eventi perché torna su pagine già visitate)
+	- go(x): va avanti di x pagine (se già visitate)
+
+	*********** "location" ************
+	Proprietà:
+	- host: restituisce l'host
+	- hostname: restituisce l'hostname
+	- href:	restituisce l'URL
+	Metodi:
+	- reload(): ricarica la pagina
+	- replace(): sostituisce l'indirizzo nella posizione attuale della history
+
+
+	Differenza tra "prompt" e "alert"
+	- "alert": visualizza un messaggio in una finestra
+	- "prompt": visualizza un messaggio e una cella di inserimento per l'input che può essere quindi salvato in una variabile
+-->
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>L4 - DOM (window)</title>
+		
+</head>
+	
+<body>
+	<script type="text/javascript">
+		//###########################################  WINDOW.DOCUMENT  ################################################
+		// Consente di accedere a molti altri oggetti contenuti al suo interno
+		
+		// Metodi: "innerHeight" e "innerWidth"
+		document.write("In questo momento la finestra è alta: " + window.innerHeight + " pixel");
+		document.write("<br>In questo momento la finestra è larga: " + window.innerWidth + " pixel");
+		
+		// Metodi: "resizeBy(asseX, asseY)" e "setInterval(fx, ms) e clearInterval(x)"
+		function allungaAccorcia() {
+			segno = Math.round(Math.random() * 2) % 2 ? 1 : -1;	// creo segno positivo o negativo
+			
+			window.resizeBy(segno * Math.round(Math.random() * 200), 0);	// crea un Int casuale tra 0 e 199 (positivo o negativo)
+		}
+		
+		id = window.setInterval("allungaAccorcia()", 500);	// valuta (ogni 500 ms) la funzione "allungaAccorcia()"
+		window.clearInterval(id);	// in questo modo esegue la fx solo una volta
+	
+		// Metodo "open"
+		nuovoURL = prompt("A che indirizzo devo andare?");
+		window.open(nuovoURL, "maledettoPopup", "height=100, width=100");
+		
+		
+		//###########################################  WINDOW.HISTORY  ################################################
+		// Controlla la storia delle pagine visitate dal browser
+		
+		alert(history.length);	// visualizza il numero di pagine visualizzate nella sessione del browser
+		
+		// Entrambi i metodi non modificano il conteggio della "history.length"
+		/*
+		<input type="button" value="INDIETRO" onclick="history.back()">	// torna alla pagina visitata precedentemente
+		<input type="button" value="AVANTI" onclick="history.forward()"> // ritorna alla pagina seguente (non fa scattare eventi perché torna su pagine già visitate)
+		<input type="button" value="VAI AVANTI" onclick="history.go(2)"> // va avanti di 2 pagine (se già visitate)
+		<input type="button" value="VAI INDIETRO" onclick="history.go(-3)"> // va indietro di 3 pagine
+		*/
+		
+		
+		//###########################################  WINDOW.LOCATION  ################################################
+		// Permette di gestire in modo completo la barra dell'indirizzo
+		
+		// In lettura
+		document.write("Host: " + location.host + "<br");
+		document.write("Hostname: " + location.hostname + "<br");
+		document.write("URL: " + location.href + "<br");
+		
+		// In scrittura
+		alert("clicca per cambiare sito");
+		// location.href = "http://www.google.it";	// va al sito indicato
+		
+		location.reload(true);	// ricarica la pagina
+		
+		location.replace("http://www.google.it");	// sostituisce l'indirizzo nella posizione attuale della history
+		
+	</script>
+</body>
+</html>

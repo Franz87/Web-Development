@@ -1,0 +1,191 @@
+<!--
+	*********** Esercizio Form ************
+	In questo esercizio implementiamo un form per l'inserimento dati che raggruppa tutte le strutture e nozioni viste nelle lezioni precedenti
+-->
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>L6 - Form e Riassunto</title>
+	
+	<link href="css/stile.css" rel="stylesheet">
+	<link href='http://fonts.googleapis.com/css?family=Cantarell:400,700' rel='stylesheet' type='text/css'>	<!-- font: google online -->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	
+	<script type="text/javascript">
+		function animaTopo()
+		{
+			if(--counter == 0)	// decrementa il contatore (o sono in fondo o all'inizio del form, quindi devo cambiare il segno)
+			{
+				incremento = -incremento;
+				counter = limiteDestro / 4;	// resetto il counter (per altre 125 volte utilizza quel valore di incremento)
+			}
+			
+			divTopo.style.left = (divTopo.offsetLeft + incremento) + "px";	// muovo il topo, ogni volta incremento la proprietà "left" (CSS) del "divTopo"
+		}
+		
+		// Funziona solamente utilizzando tre campi di input separati per l'inserimento della data
+		function checkData()
+		{
+		    if(!(mese = document.getElementById('mm').value))
+		    {
+		        //anno vuoto? default = anno in corso
+		        if(!(anno = document.getElementById('aa').value))
+		            anno = new Date().getFullYear();
+       
+		        switch(mese)
+		        {
+		            case "1": case "3": case "5": case "7": case "8": case "10": case "12":
+			            maxGiorni = 31;
+		       	        break;
+     
+		            case "2":
+			 	        maxGiorni = anno % 4 == 0 ? 29 : 28;
+		       	        break;
+	  
+	 	            default: maxGiorni = 30;  
+		        }
+		        
+				document.getElementById('gg').max = maxGiorni;
+		    }
+		}
+		  
+		function visualizzaTopo()
+		{ 
+			divTopo = document.getElementById("divTopo");	// aggancio il div "divTopo"
+			
+			s = new String(document.getElementById('scheda').style.width);	// aggancio il form, leggendo la sua larghezza (es. 500px), all'oggetto String s
+			limiteDestro = s.substring(0, s.length - 2);	// prende la sottostringa "500" dalla stringa "500px" (tagliando i due char finali "px")
+			counter = limiteDestro / 4;	// per 125 volte dovrò aggiungere 4 alla posizione del "divTopo"
+			incremento = 4;
+			
+			muoviTopo = window.setInterval("animaTopo();", 100);	// richiamo la fx ogni 100ms (in parallelo)
+			
+			document.getElementById('aa').max = new Date().getFullYear();	// in partenza il valore max per l'anno è quello attuale e lo assegno alla proprietà max
+		}
+		
+		function sfondo()
+		{ 
+	    	var dataOdierna  = new(Date);
+        	
+			if(dataOdierna.getHours() >= 12)
+				document.body.style.backgroundImage  = "url('imgs/sera.jpg')";
+			else
+				document.body.style.backgroundImage  = "url('imgs/giorno.jpg')";
+		}
+
+		function validazione()
+		{
+			if(document.getElementById("cognome").value.length > 12 )	// controllo su "cognome" troppo lungo
+			{
+			    alert("Che razza di nome! Troppi caratteri ..."); 
+			    return false;
+			}
+        	
+			for(i=0; i<document.scheda.nazione.length; i++)
+				if(document.scheda.nazione[i].checked)
+				{
+					alert(document.scheda.nazione[i].value);
+				  	break;
+				}
+        	
+			for(i=0; i<document.scheda.linguaggi.length; i++)
+				if(document.scheda.linguaggi[i].checked)
+					alert(document.scheda.linguaggi[i].value);
+			
+			alert('Noto che sei un ' + document.scheda.qualifica.value);
+			return true;
+		}
+
+		function tutti()
+		{
+			for(i=0; i<document.scheda.linguaggi.length; i++)	// riferimento ad un array (dei linguaggi)
+		  		document.scheda.linguaggi[i].checked = true;
+		}
+		
+	</script>		
+</head>
+	
+<body onLoad="visualizzaTopo();">
+	<header> <h3>INSERIMENTO DATI DIPENDENTE</h3> </header>
+	
+	<article>
+	  
+	  <section>
+		  <div id="divTopo"> <img name="Topo" id="Topo" src="imgs/topoAnimato.gif"> </div>
+		  
+		  <form action="nopage.php" method="post" name="scheda" id="scheda"
+		        onMouseOver="document.body.style.backgroundImage = ''" 
+		        onMouseOut="sfondo();" onSubmit="return validazione();" style="width: 740px;"> <!-- se validazione() torna false, si blocca il "submit" -->
+		  	  
+			  <table>
+				  <tr> <td> Cognome </td>  	 <td> <input name="cognome" type="text" size=35 id="cognome" required></td> </tr>
+			      <tr> <td> Nome </td>     	 <td> <input name="nome" type="text" value="" size=35 id="nome" required></td> </tr>
+			      <tr> <td> Et&agrave; </td> <td> <input type="number" min="18" max="90" name="eta" size="2" maxlength="2" id="eta" required></td> </tr>
+    
+			      <tr> <td>Assunto il ...</td>
+					   <td>
+						   <!-- Controlli sulla data
+						   <input name="gg" type="number" min="1" max="31" id="gg" size="2" maxlength="2"> / 
+			               <input name="mm" type="number" min="1" max="12" id="mm" size="2" onblur="checkData();" maxlength="2"> / 
+			               <input name="aa" type="number" min="1950" id="aa" size="4" maxlength="4" onblur="checkData();">
+						   -->
+						   <!-- E' possibile usare anche il nuovo tag HTML5 per la gestione della data -->
+						   <input type="date" name="data"> <!-- Non effetua controlli sulla data -->
+					   </td>
+			      </tr>
+    
+			      <tr> 
+			          <td> Nazionalit&agrave; </td>
+			          <td>
+				          <input type="radio" name="nazione" checked value="Italia" id="nazione1"> Italiana 
+			        	  <input type="radio" name="nazione" value="CE" id="nazione2"> CE 
+			        	  <input type="radio" name="nazione" value="altro" id="nazione3"> Altro
+					  </td>
+			      </tr>
+    
+			      <tr> 
+			          <td>Linguaggi</td>
+			          <td>
+				          <input name="linguaggi" type="checkbox" id="linguaggi1" value="C"> C 
+			        	  <input name="linguaggi" type="checkbox" id="linguaggi2" value="CPP"> C++ 
+			        	  <input name="linguaggi" type="checkbox" id="linguaggi3" value="Java"> Java/Javascript 
+			        	  <input name="linguaggi" type="checkbox" id="linguaggi4" value="D"> Delphi
+						  &nbsp;&nbsp;&nbsp;&nbsp;<input type="button" name="button" value="TUTTI" onclick="tutti();">
+						  <!-- <p onDblClick="tutti();"> TUTTI </p> -->
+					  </td>
+			      </tr>
+    
+			      <tr> 
+			          <td>Qualifica</td>
+			          <td><select name="qualifica" id="qualifica">
+			                  <option value="project leader"> Project leader </option>
+			          	      <option value="analista"> Analista </option>
+			              	  <option value="analista/programmatore"> Analista / programmatore </option>
+			              	  <option value="programmatore" selected> Programmatore </option>
+			              	  <option value="designer"> Designer </option>
+			              	  <option value="esperto audio video"> Esperto Audio Video </option>
+			              </select>
+					  </td>
+			      </tr>
+				
+			      <tr> 
+			          <td style="background-color: rgb(0,102,204); height:35px;"> <input name="bConferma" type="submit" id="bConferma" value="CONFERMA DATI"> </td>
+			      </tr>
+			  </table>
+			  
+		  </form>
+	  </section>
+	
+	</article>
+	
+	<aside> 
+		<p>In questa pagina sono stati implementati tutti gli strumenti studiati nelle precedednti lezioni e messi quindi a disposizione per la compilazione di un form.</p>
+		<p>Il bottone INVIA non fa riferimento a nessuna pagina lato server, ma sono comunque stati implenentati dei controlli sui vari campi.</p>
+		<p>E' possibile migliorare il form inserendo ulteriori controlli gestiti con funzioni Javascript.</p>
+	</aside>
+	
+	<footer> <small>Copyright &copy 2014 by Franz</small> </footer>
+</body>
+</html>

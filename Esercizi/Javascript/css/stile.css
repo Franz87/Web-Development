@@ -1,0 +1,118 @@
+/* Codice per la compatibilità con versioni dei browser obsolete (che non riconoscono la semantica dell'HTML5) */
+article, aside, figure, figcaption, footer, header, hgroup, nav, section{
+	     display: block;
+}
+/* fine codice compatibilità */
+
+body {
+	width: 1200px;
+	margin: 0 auto 0 auto;
+	font-family: 'Cantarell', sans-serif;
+	font-size: 18px;
+}
+
+header {
+	width: 1160px;
+	height: 70px;
+	background-color: #476DB5;
+	padding: 10px;
+	margin: 10px;
+}
+
+nav {
+	width: 1160px;
+	height: 70px;
+	background-color: #DCDCDA;
+	padding: 10px;
+	margin: 10px 10px 0 10px;
+}
+
+article {
+	width: 760px;
+	height: 455px;
+	float: left;
+	background-color: #26AB66;
+	padding: 10px;
+	margin: 10px;	
+}
+
+section {
+	width: 740px;
+	height: 415px;
+	/*height: auto;*/
+	background-color: #C0DEEB;
+	padding: 10px;
+	margin: 10px 0 0 0;*
+}
+
+aside {
+	width: 360px;
+	height: 300px;
+	height:	455px;
+	float: left;
+	background-color: #26AB66;
+	padding: 10px;	
+	margin: 10px;
+}
+
+footer {
+	clear: both;
+	width: 1160px;
+	height: 70px;
+	background-color: #476DB5;
+	padding: 10px;
+	margin: 10px;
+}
+
+
+/* Regole CSS per i <div> */
+#divTopo {
+	position: absolute;	/* svincola il <div> dal resto della pagina (come fosse un post-it) */
+	width:100px;
+	height:100px;
+	left: 52px; 
+	top: 380px;
+}
+
+#Topo {
+	width: 60px; 
+	height: 60px;
+}
+
+
+/* Elementi Personalizzati */
+h3 {
+	font-family: 'Cantarell', sans-serif;
+	font-size: 30px;
+	font-style: bold;
+	color: #ffffff;
+}
+
+form {
+	width: 740px;
+	/*height: 415px;*/
+	height: auto;
+}
+
+table {
+	width: 740px; 
+	border: groove 2px; 
+	background: #ffffff;
+}
+
+td:first-child {
+	/* Pseudoclasse */
+	/* Il primo <td> di ogni <tr> viene formattato come segue */
+	width: 28%; 
+	background: #26AB66; 
+	font-weight: bold;
+}
+
+td {
+	background: #476DB5;
+}
+
+p {
+	text-align: justify;
+	padding: 5px;
+}

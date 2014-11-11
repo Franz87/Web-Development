@@ -1,0 +1,69 @@
+<!--
+	*********** FUNZIONI ************
+	Javascript non fa differenza tra FUNZIONI (sottoprogrammi che tornano qualcosa al chiamante) e PROCEDURE (non tornano niente).
+	Esistono solo le "funzioni" (function), che possono usare o no il comando "return".
+	E' possibile definirle in qualsiasi parte della pagina e saranno visibili da quel punto in poi.
+	Non è necessario scrivere davanti il tipo di valore restituito (void, int, ...).
+
+	Passaggio parametri
+	- valore: valido per numeri, bool, stringhe (si genera una copia del parametro)
+	- riferimento: realizzabile solo tramite passaggio di "oggetti" (Object)
+
+	*********** STRINGHE ************
+	Le stringhe sono oggetti (Object) con le quali possiamo usare vari metodi:
+	- s.length(): definisce la lunghezza di una stringa
+	- s.toUpperCase(): trasforma la stringa in maiuscolo
+	- s.fontsize(x): assegna lo stile voluto alla stringa
+	- ...
+-->
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<title>L3 - Funzioni</title>
+		
+</head>
+	
+<body>
+	<script type="text/javascript">
+		//###########################################  INTRO  ################################################
+		
+		// Fx che genera un intero casuale tra 0 e 10000
+		function randomInt() {
+			return Math.round(Math.random() * 10000);
+		}
+		
+		// Fx che genera un intero casuale (con max passato per parametro alla funzione)
+		function randomInt(max) {
+			return Math.round(Math.random() * max);
+		}
+		
+		for(i = 0; i < 10; i++)
+			document.write(randomInt(i) + "<br>");
+		
+		
+		//####################################  PASSAGGIO PARAMETRI ##########################################
+		
+		// Fx che utilizza il passaggio parametri per RIFERIMENTO	
+		function raddoppia(a) {
+			a.value *= 2;
+		}
+		
+		var x = new Object;	// creazione oggetto
+		x.value = 100;
+		raddoppia(x);	// passaggio per riferimento
+		alert(x.value);
+		
+		
+		//#########################################  STRINGHE ###############################################
+		
+		// Uso di vari metodi sulle stringhe	
+		var s = "casa";
+		
+		alert("Posizione: " + s[3]);	// stringa vista come vettore
+		alert("Lunghezza: " + s.length);	// lunghezza della stringa
+		alert("Maiuscolo: " + s.toUpperCase());	// trasformazione stringa in maiuscolo
+		document.write("Fontsize: (" + s.fontsize(20));	// definizione dello stile alla stringa
+				
+	</script>
+</body>
+</html>
