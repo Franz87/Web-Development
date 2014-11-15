@@ -1,0 +1,78 @@
+<!DOCTYPE html>	
+<!-- INTRODUZIONE al linguaggio di descrizione CSS (non è un linguaggio di programmazione).
+		 L’acronimo CSS sta per Cascading Style Sheets (fogli di stile a cascata) e designa un linguaggio di stile per i documenti web. I CSS istruiscono
+		 un browser o un altro programma utente su come il documento debba essere presentato all’utente, per esempio definendone i font, i colori, le
+	   immagini di sfondo, il layout, il posizionamento delle colonne o di altri elementi sulla pagina, etc.
+
+		 ************* CLASSI *************
+ 		 Assegno ad un elemento <tag> una CLASSE di stile, definita poi nel foglio di stile. Posso associare quella classe a molteplici elementi
+ 		 **********************************
+-->
+
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L1 - Intro CSS</title>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
+	<link href="css/stili.css" rel="stylesheet">
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section> Pargrafo
+		  <p class="paragrafo">	<!-- esempio di "class" -->
+		  	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lorem nisi, consequat at lectus eu, hendrerit consectetur nulla. Mauris tristique leo a augue dictum interdum. Phasellus fermentum urna non erat mattis pharetra quis vel diam. Donec dictum dui non leo ultricies, a volutpat odio lacinia. Ut lobortis felis quis magna consectetur pretium. Curabitur libero eros, facilisis sed lorem vehicula, pharetra convallis tellus. Suspendisse convallis lorem sem, eget sagittis mi fermentum a. Nunc augue metus, viverra dapibus enim ac, cursus suscipit tellus.
+		  </p>
+		</section>
+		
+		<section> Immagine <br>
+			<img src="imgs/fanta-logo.png" alt="Testo alternativo" class="immagine">
+		</section>
+		
+		<section> Lista <br>
+			<p>
+				<ul class="lista">
+					<li>riga 1</li>
+					<li>riga 2</li>
+					<li>riga 3</li>
+				</ul>
+			</p>
+		</section>
+		
+		<section> Paragrafo nascosto <br>
+			<p class="paragrafo">
+				<span class="nascosto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque lorem nisi, consequat at lectus eu, hendrerit consectetur nulla. Mauris tristique leo a augue dictum interdum. Phasellus fermentum urna non erat mattis pharetra quis vel diam. Donec dictum dui non leo ultricies, a volutpat odio lacinia. Ut lobortis felis quis magna consectetur pretium. Curabitur libero eros, facilisis sed lorem vehicula, pharetra convallis tellus. Suspendisse convallis lorem sem, eget sagittis mi fermentum a. Nunc augue metus, viverra dapibus enim ac, cursus suscipit tellus.</span>
+			</p>
+		</section>
+	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

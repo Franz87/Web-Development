@@ -1,0 +1,75 @@
+<!DOCTYPE html>	
+<!-- INTRODUZIONE al linguaggio di descrizione CSS (non è un linguaggio di programmazione).
+
+		 ************** DIV ***************
+ 		 Blocchi di contenuti che possono essere posizionati con molta precisione nella pagina.
+		 - Si posizionano dal basso verso l'alto del flusso dei contenuti della pagina
+ 		 **********************************
+-->
+
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L2 - Div e impaginazione</title>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
+	<link href="css/stili2.css" rel="stylesheet">
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section> Div in cascata <br>
+			<div id="logo">
+				Posizione <mark> fixed </mark><br>
+				by <a href=""> www.asdtenniscampagnuzza.it </a>
+			</div>
+			
+			<div id="div1"> Primo DIV </div>
+			
+			<div id="div2"> Secondo DIV </div>
+			
+			<div id="div3"> Terzo DIV </div>
+		</section>
+		
+	  <section> Div con float <br>
+			<div id="div4"> Quarto DIV </div>
+			
+			<div id="div5"> Quinto DIV </div>
+			
+			<div id="div6"> Sesto DIV </div>
+			
+			<div id="div7"> Settimo DIV </div>
+			
+			<div id="div8"> <img id="img" src="imgs/fanta-logo.png"> </div>
+		</section>
+	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

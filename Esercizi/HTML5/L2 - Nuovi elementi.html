@@ -22,6 +22,10 @@
 	 Per l'inserimento automatico di colori è possibile usare il seguente nuovo comando all'interno di un tag <input>:
 	 - color: crea un "colorpicker" per la scelta del colore
 	 *****************************************
+
+	 *********** INPUT TYPE "SEARCH" ***********
+	 Crea un campo di ricerca (non impone nessun pattern)
+	 *******************************************
 -->
  
 <!DOCTYPE html>	
@@ -86,6 +90,12 @@
 		  <!-- Input type "color" -->
 		  Inserisci un colore<br>
 	  	  <input type="color" name="colore"> <!-- esempio di "colorpicker" -->
+	  </section>
+	  
+	  <section>
+		  <!-- Input type "search" -->
+		  Parola chiave:
+	  	  <input type="search" autocomplete="on" placeholder="article, section, ..." name="keyword" required maxlength="50">
 	  </section>
 	
 	</article>

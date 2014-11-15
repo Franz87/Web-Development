@@ -19,7 +19,22 @@
 <head>
 	<meta charset="utf-8">
 	<title>Prova Html</title>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
 	<link href="css/stile.css" rel="stylesheet">
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
 	<!--[if lt IE 9]>
 	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
@@ -40,8 +55,8 @@
 	  <section>
 		  <figure class=imgSx>
 			  <img src=imgs/immagine.jpg>
-		  <figcaption>Questa è la didascalia dell’immagine, una descrizione dell’immagine stessa.</figcaption>
-	      </figure>
+		    <figcaption>Questa è la didascalia dell’immagine, una descrizione dell’immagine stessa.</figcaption>
+	    </figure>
 		  <p>Nulla quis ante ut mi hendrerit tincidunt. Nulla hendrerit ornare mi, in sollicitudin tortor molestie at. Cras mattis, quam quis euismod vulputate, ex lectus laoreet ipsum, eget tristique augue tellus vel neque. Nulla facilisi. Mauris tempus in augue a pretium. In eleifend dui quis faucibus venenatis. Phasellus pellentesque porta posuere. Sed in eros pulvinar, tempor massa sit amet, suscipit ligula. Mauris quam dolor, feugiat sagittis placerat vel, volutpat sed dui. In luctus risus non lacinia lacinia. Nulla ullamcorper augue sed lorem cursus varius. In hac habitasse platea dictumst. Suspendisse vulputate arcu nec justo condimentum eleifend. Maecenas tempus lacus vel purus maximus vehicula. Aenean iaculis sapien fermentum malesuada pharetra. Nullam elit mauris, vehicula ut malesuada ac, auctor a odio. Morbi et lectus placerat, varius risus a, dignissim ipsum.</p>		  
 	  </section>
 	
