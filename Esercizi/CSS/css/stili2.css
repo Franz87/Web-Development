@@ -9,16 +9,28 @@
 				     dagli attributi top, bottom, left, right... La differenza con absolute è che il contenitore a cui fa
 					 	 riferimento è sempre la finestra del browser
 	- "absolute": il blocco viene sottratto al normale flusso dei contenuti, si specificano manualmente le coordinate
-						  di posizionamento. Avviene sempre rispetto al box contenitore dell’elemento (il contenitore deve
-							essere settato a "position: relative" senza coordinate).
-	- "relative": l'elemento viene posizionato relativamente al suo box contenitore. In questo caso il box contenitore
-							è rappresentato dal posto che l’elemento avrebbe occupato nel normale flusso del documento.
-							La posizione viene impostata con le proprietà top, left, bottom o right (l'elemento viene traslato).
-							Con valori positivi --> spingiamo l'elemento lontano dall'attributo usato (es. left: 50px)
-							Con valori negativi --> tiriamo l'elemento verso l'attributo usato (es. top: -20px)
+						    di posizionamento. Avviene sempre rispetto al box contenitore dell’elemento (il contenitore deve
+							  essere settato a "position: relative" senza coordinate).
+	- "relative": l'elemento viene posizionato relativamente al suo box contenitore (a se stesso). In questo caso il
+								box contenitore è rappresentato dal posto che l’elemento avrebbe occupato nel normale flusso del
+								documento.
+							  La posizione viene impostata con le proprietà top, left, bottom o right (l'elemento viene traslato).
+							  Con valori positivi --> spingiamo l'elemento lontano dall'attributo usato (es. left: 50px)
+							  Con valori negativi --> tiriamo l'elemento verso l'attributo usato (es. top: -20px)
+							  Gli altri box intorno mantengono la stessa posizione (come se il blocco relative fosse ancora in quella
+							  posizione - "fantasma")
 
-	- "float": quando ci sono più blocchi che vanno ad incidere sulla stessa zona allora spostali verso dx o sx
+	- "float": quando ci sono più blocchi che vanno ad incidere sulla stessa zona allora sono shiftati verso dx o sx
+
+	- "clear: both": proprietà che annulla gli attributi position e float dei blocchi precedenti (usato ad es. nel footer)
   ********************************************
+
+	***************** OVERFLOW *****************
+	Il contenuto in eccesso viene mantenuto all'interno del contenitore (aggiungendo eventulmente delle barre laterali
+	di scorrimento):
+		- overflow: auto;		// adatta il contenitore al contenuto
+		- overflow: hidden; // taglia il contenuto
+	********************************************
 */
 
 /***************************************************************************************************************/
@@ -84,7 +96,7 @@ aside {
 }
 
 footer {
-	clear: both;
+	clear: both;	/* annulla gli effetti di position e float precedenti */
 	width: 1160px;
 	height: 70px;
 	background-color: #C4C4C4;
@@ -147,9 +159,29 @@ footer {
 #div8 {
 	background-color: yellow;
 	width: 5%;
-	position: absolute;
+	position: absolute;	/* position "absolute" (si rifà al tag <html> in quanto non trova prima altri tag con "position relative") */
 	left: 32%;
 	top: 73%;
+}
+
+#div9 {
+	background-color: yellow;
+	width: 50%;
+	position: relative;	/* position "relative" */
+	left: 380px;	/* sposto verso dx il box (relativamente alla sua posizione nel flusso) */
+	top: 10px;	/* sposto verso il basso il box (relativamente alla sua posizione nel flusso) */
+}
+
+#div10 {
+	background-color: #000000;
+	width: 360px;
+	height: 138px;
+	float:left;
+	margin: 10px;
+	padding: 10px;
+}
+#div10 p {
+	color: #FFF;
 }
 
 #img {
@@ -157,7 +189,9 @@ footer {
 	height: 100%;
 }
 
-
+#sezione {
+	overflow: auto;	/* il contenuto in eccesso viene mantenuto all'interno del contenitore */
+}
 
 
 
