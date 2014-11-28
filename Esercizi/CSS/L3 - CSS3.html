@@ -1,0 +1,106 @@
+<!DOCTYPE html>	
+<!-- INTRODUZIONE al linguaggio di descrizione CSS (non è un linguaggio di programmazione).
+
+		 ************** NUOVI SELETTORI ***************
+ 		 primoTag~secondoTag: cambia gli attributi del secondoTag creato dopo il primoTag
+		 primoTag+secondoTag: cambia gli attributi del secondoTag immediatamente successivo al primoTag
+		 [nomeProprietà]: cambia gli attributi di tutti i tag in cui è presente la proprietà "id"
+		 nomeTag[nomeProprietà]: cambia gli attributi dei tag (nomeTag) in cui è presente la proprietà "id"
+		 nomeTag[nomeProprietà*="stringa/valore"]: cambia gli attributi del "nomeTag" che contengono "nomeProprietà" e che a loro volta contengono "*.stringa/valore"
+		 nomeTag[nomeProprietà^="stringa/valore"]: cambia gli attributi del "nomeTag" che contengono "nomeProprietà" e che a loro volta iniziano con "stringa/valore"
+		 nomeTag[nomeProprietà$="stringa/valore"]: cambia gli attributi del "nomeTag" che contengono "nomeProprietà" e che a loro volta terminano "stringa/valore"
+		 nomeTag:first-of-type: cambia gli attributi del primo figlio di quel tipo
+		 nomeTag:last-of-type: cambia gli attributi dell'ultimo figlio di quel tipo
+		 nomeTag:nth-of-type(int): cambia gli attributi delll'ennesimo figlio di quel tipo
+		 :not(nomeTag): tutti i tag tranne "nomeTag" posiederanno gli attributi specificati
+ 		 **********************************************
+-->
+
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L3 - CSS3</title>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
+	<link href="css/stili2.css" rel="stylesheet">
+	
+	<style type="text/css" media="screen">
+		p~ul {background:#FF0000;}	/* cambia lo sfondo alle <ul> dopo il tag <p> */
+		p+ul {background:#FF0000;}	/* cambia lo sfondo alle <ul> immediatamante successive al tag <p> */
+		[id] {background:#00FF00;}	/* cambia gli attributi di tutti i tag in cui è presente la proprietà "id" */
+		a[id] {background:#0000FF;}	/* cambia gli attributi di tutti i link in cui è presente la proprietà id */
+		a[href*=".it"] {background:#00FFFF;}	/* cambia gli attributi dei link che contengono "href" e che a loro volta contengono "*.it" */
+		a[href="www.miosito.it"] {background:#00FFFF;}	/* cambia gli attributi dei link che contengono "href" e che a loro volta contengono "www.miosito.it" */
+		a[href^="https"] {background:#00FFFF;}	/* cambia gli attributi dei link che contengono "href" e che a loro volta iniziano per "https" */
+		a[href$=".com"] {background:#00FFFF;}	/* cambia gli attributi dei link che contengono "href" e che a loro volta terminano con ".com" */
+		ul:first-of-type {background:#00FFFF;}	/* cambia gli attributi della prima <ul> (figlia del tag <body>) */
+		li:first-of-type {background:#FFFF00;}	/* cambia gli attributi di tutti i primi figli <li> (figli del tag <ul>) */
+		li:last-of-type {background:#40FF04;}	/* cambia gli attributi di tutti gli ultimi figli <li> (figli del tag <ul>) */
+		
+		input:disabled {background:#888;}	/* tuttii campi input con proprietà disabled avranno questo background */
+		input:enabled {background:lightBlue;}	/* tutti i campi input con proprietà enabled (superfluo specificarla) avranno questo backgorund */
+		
+		:not(a) {color:red;}	/* tutto quello che non è tag <a> possiede questo attributo */
+	</style>
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> article
+	  
+	  <section>
+			<h1>Non sono un paragrafo</h1>
+			<ul id="primaLista">
+				<li>Banana</li>
+				<li>Ananas</li>
+			</ul>
+			
+			<p>Io sono un paragrafo</p>
+			<ul>
+				<li>Banana</li>
+				<li><a href="www.miosito.it" id="ananas">Ananas</a></li>
+			</ul>
+			
+			<h1>Neppure io ma prima di me ce n'è uno</h1>
+			<ul>
+				<li>Banana</li>
+				<li>Ananas</li>
+			</ul>
+	  </section>
+		
+		<section> Proprietà input: "disabled" e "enabled"
+			<form>
+				nome <input type="text" name="nome"><br>
+				età <input type="text" name="eta"><br>
+				cognome <input type="text" name="cognome" disabled="disabled"><br>
+			</form>
+		</section>
+	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

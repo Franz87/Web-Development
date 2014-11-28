@@ -1,0 +1,140 @@
+/***************************************************************************************************************/
+/************************************************* TEORIA CSS **************************************************/
+/***************************************************************************************************************/
+/*
+  ***************** COMPATIBILITA' BROWSER NUOVI ATTRIBUTI *****************
+	I vari browser (alle volte) prevedono un prefisso che va anteposto al nome degli attributi/proprietà nuove: 
+	- IE: 						-ms-			(ad es. -ms-transform)
+	- Firefox: 				-moz-			(ad es. -moz-transform)
+	- Chrome/Safari: 	-webkit-	(ad es. -webkit-transform)
+	- Opera: 					-o-				(ad es. -o-transform)
+  **************************************************************************
+
+  ******************************* BACKGORUND *******************************
+	Avendo settato un'immagine come background, la si potrà dimensionare in vari modi:
+	- background-size: 1280px 720px;	// dimensioni fisse manuali
+  - background-size: cover;					// copre tutta la finestra, anche tagliando un po' l'immagine (mantenendone le dimensioni corrette)
+	- background-size: contain;				// copre tutta la pagina (mantenendo le proporzioni) ma senza tagliare l'immagine (presenza di bande ai bordi)
+
+	E' anche possibile definire più immagini per lo sfondo:
+	- background: url("img1"), url("img2");
+	- background-repeat: repeat-x, repeat-y;	// img1 si ripete orizzontalmente (x), img2 si ripete verticalmente (y)
+	- background-position: left top, left bottom;	// img1 parte in alto a sx, img2 parte in basso a sx
+
+	- background-clip: border-box;	// lo sfondo si estende fino a ricoprire l'area dell'elemento delimitata dal bordo
+	- background-clip: padding-box;	// lo sfondo si estende fino a ricoprire l'area dell'elemento che include il padding (escluso bordo)
+	- background-clip: content-box;	// lo sfondo si estende fino a ricoprire l'area del contenuto (esclusi padding e bordo) 
+	**************************************************************************
+*/
+
+/***************************************************************************************************************/
+/************************************************* REGOLE CSS **************************************************/
+/***************************************************************************************************************/
+ 
+/* Codice per la compatibilità con versioni dei browser obsolete (che non riconoscono la semantica dell'HTML5) */
+article, aside, figure, figcaption, footer, header, hgroup, nav, section{
+	     display: block;
+}
+/* Fine codice compatibilità */
+
+
+/* ********************************************** TAG BASE *****************************************************/
+body {
+	width: 1200px;
+	margin: 0 auto 0 auto;
+	font-size: 18px;
+	color: #FFF;
+	background:	#1FCCFF url("../imgs/bg1.jpg") center center fixed no-repeat;	/* l'immagine lasciata cosi non è dimensionata, va fuori dai bordi */
+	/* background-size: 1200px 720px;	/* definisco manualmente le dimensioni dell'immagine */
+	/* background-size: cover;	/* copre tutta la finestra, anche tagliando un po' l'immagine (mantenendone le dimensioni corrette) */
+	background-size: contain;	/* copre tutta la pagina (mantenendo le proporzioni) ma senza tagliare l'immagine (presenza di bande ai bordi) */
+}
+
+header {
+	width: 1158px;
+	height: 70px;
+	/*background-color: #A4A875;*/
+	background: transparent;
+	border: 1px solid #FFF;
+	padding: 10px;
+	margin: 10px;
+}
+
+nav {
+	width: 1158px;
+	height: 70px;
+	/*background-color: #DCDCDA;*/
+	background: transparent;
+	border: 1px solid #FFF;
+	padding: 10px;
+	margin: 10px 10px 0 10px;
+}
+
+article {
+	width: 758px;
+	height: 600px;
+	float: left;
+	/*background-color: #47834B;*/
+	
+	background: url("../imgs/bg2.jpg"), url("../imgs/bg3.jpg");	/* esempio di 2 img come sfondo */
+	background-size: 200px 200px;
+	background-repeat: repeat-x, repeat-y;	/* bg2 si ripeterà in orizzontale (x), bg3 si ripeterà in verticale (y) */
+	background-position: left top, left bottom;	/*bg2 partirà in alto a sx, bg3 partirà in basso a sx */
+	
+	border: 1px solid #FFF;
+	padding: 10px;
+	margin: 10px;
+}
+
+section {
+	width: 738px;
+	/*height: 120px;*/
+	height: auto;
+	/*background-color: #F2F2F2;*/
+	background: transparent;
+	border: 1px solid #FFF;
+	padding: 10px;
+	margin: 10px 0 0 0;
+}
+
+aside {
+	width: 358px;
+	height: 600px;
+	float: left;
+	/*background-color: #72C29B;*/
+	background: transparent;
+	border: 1px solid #FFF;
+	padding: 10px;	
+	margin: 10px;
+}
+
+footer {
+	clear: both;	/* annulla gli effetti di position e float precedenti */
+	width: 1158px;
+	height: 70px;
+	/*background-color: #C4C4C4;*/
+	background: transparent;
+	border: 1px solid #FFF;
+	padding: 10px;
+	margin: 10px;
+}
+
+
+/* ********************************** CLASSI PERSONALIZZATE **************************************/
+
+.sfondoDiv {
+	border: 10px dashed blue;
+	padding: 20px;
+	position: relative;
+	left: 195px;
+	top: 170px;
+	width: 510px;
+	height: 350px;
+	font-weight: bold;
+	font-size: 30px;
+	background-color: yellow;
+	background-clip: content-box;
+}
+
+
+
