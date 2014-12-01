@@ -1,0 +1,74 @@
+<!DOCTYPE html>	
+<!-- INTRODUZIONE al linguaggio di descrizione CSS (non è un linguaggio di programmazione).
+
+		 ***************** ANIMAZIONI *****************
+ 		 Con CSS3 è possibile utilizzare le animazioni applicate sugli elementi.
+		 Per fare questo occorre specificare nelle regole di stile il tipo di animazione desiderata e successivamente specificare a quale elemento
+		 della pagina applicarla (definendone quindi durata e numero di ripetizioni).
+ 		 **********************************************
+-->
+
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L8 - Animation</title>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/animation.js"></script>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
+	<link href="css/stili4.css" rel="stylesheet">
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> Animazioni sugli elementi
+	  
+		<section>
+			<div id="div_1">
+				Animazione background
+			</div>
+			
+			<div id="div_2">
+				Animazione traslazione
+			</div>
+			
+			<div id="div_3">
+				Animazione traslazione alternata
+			</div>
+			
+			<div id="div_4">
+				Animazione background (% animazione)
+			</div>
+			
+			<button id="pausa" onclick="pausa_riparti()">	Pausa / Riparti </button>			
+		</section>
+	
+	</article>
+	
+	<aside> aside </aside>
+
+	<footer> footer </footer>
+	
+</body>
+</html>	

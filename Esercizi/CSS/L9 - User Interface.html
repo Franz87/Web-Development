@@ -1,0 +1,75 @@
+<!DOCTYPE html>	
+<!-- INTRODUZIONE al linguaggio di descrizione CSS (non è un linguaggio di programmazione).
+
+		 ***************** USER INTERFACE *****************
+		 Con CSS3 è possibile ridimensionare i vari elementi HTML a piacimento.
+		 Inoltre è stato implementato il nuovo tipo di "contorno" definito outline
+ 		 **************************************************
+-->
+
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L9 - User Interface</title>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
+	<link href="css/stili5.css" rel="stylesheet">
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> User Interface
+	  
+		<section>
+			<div class="areaEdit" contenteditable="true">
+				Ridimensiona quest'area per scrivere più comodamente!
+			</div>
+			
+			<div>
+				Commenti: <input id="commenti" type="text" placeholder="Inserisci commenti">
+			</div>
+			
+			<div>
+				<input id="button" type="button" value="Bottone">
+			</div>
+			
+			<div id="borderEoutline" class="areaEdit" contenteditable="true">
+				Queste righe servono per dimostrare la <span class="outline"> differenza tra border e outline... </span>
+				Queste righe servono per dimostrare la differenza tra border e outline...
+				Queste righe servono per dimostrare la differenza tra border e outline...
+				Queste righe servono per dimostrare la differenza tra border e outline...
+			</div>
+			
+			<div>
+				<img class="outline" src="imgs/fanta-logo.png" width="40%">
+			</div>		
+		</section>
+	
+	</article>
+	
+	<aside> aside </aside>
+
+	<footer> footer </footer>
+	
+</body>
+</html>	

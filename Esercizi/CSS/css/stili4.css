@@ -18,12 +18,35 @@
 	- .nomeClasse {font-family: nomeFont;}  // in questo modo dfinisco una classe che ha il font appena specificato 
   *******************************************************
 
-  ***************** FONT PERSONALIZZATI *****************
+  ***************** TRASFORMAZIONI 3D *******************
 	-webkit-transform: rotate(45deg);  // ruoto l'elemento di 45°
 	-webkit-transform: translate(100px, 100px);  // traslo l'elemento di 100px in H e 100px in V
 	-webkit-transform: rotate(45deg) translate(100px, 100px);  // è possibile combinare le proprietà (OCCHIO all'ordine)
 	-webkit-transform: scale(1, 1)	// scala l'elemento di 1 in H e 1 in V
   *******************************************************
+
+	********************* ANIMAZIONI **********************
+ 	Con CSS3 è possibile utilizzare le animazioni da applicare agli elementi.
+	Per fare questo occorre specificare nelle regole di stile il tipo di animazione desiderata e successivamente specificare a quale elemento
+	della pagina applicarla (definendone quindi durata e numero di ripetizioni).
+	Ad esempio, definiamo un'animazione:
+	
+	@-tipo_browser-nome_animazione
+	{
+	 	from {nome_proprietà}
+		to {nome_proprietà}
+	}
+
+	quindi ora specifichimo l'elemento a cui è associata:
+
+	#nome_elemento {-tipo_browser-animazione: nome_animazione, durata (s), ripetizioni}
+
+	Sono disponibili varie proprietà da associare alle animazioni:
+	 -webkit-animation: nome_animazione		// specifica il nome dell'animazione da applicare
+	 -webkit-animation-delay: durata			// specifica il ritardo di inizio dell'animazione
+	 -webkit-animation-direction: tipo		// specifica il tipo di direzione (normal o alternate)
+	 -webkit-animation-timing-function: 	// ease (standard, veloce e rallenta, si divide in ease-in e ease-out), linear (ritmo costante)
+	*******************************************************
 */
 
 /***************************************************************************************************************/
@@ -97,6 +120,15 @@ footer {
 	margin: 10px;
 }
 
+div {
+	width: 200px;
+	height: 100px;
+	background: yellow;
+	/*font-size: 100px;*/
+	-webkit-transform: rotateX(0deg);
+	float: left;
+}
+
 
 /* ********************************** CLASSI PERSONALIZZATE **************************************/
 
@@ -135,6 +167,8 @@ p.dimTesto2:hover {
 	font-family: 'manuale';	/* esempio di uso del font selezionato in un elemento */
 }
 
+
+/* ****************************************************** TRASFORMAZIONI 2D E 3D ********************************************************* */
 .divTrasl {
 	width: 200px;
 	height: 200px;
@@ -146,7 +180,7 @@ p.dimTesto2:hover {
 .pTrasl {
 	font-size: 100px;
 	margin: 0px;
-	-webkit-transform: translate(0px, 20px) rotate(25deg);	/* esegue trsformazioni sul paragrafo */
+	-webkit-transform: translate(0px, 20px) rotate(25deg);	/* esegue trasformazioni sul paragrafo */
 	-webkit-transform: scale(2, 1);	/* scala l'immagine (150% in H, 100% V) */
 }
 
@@ -155,12 +189,78 @@ p.dimTesto2:hover {
 	left: 30px;
 }
 
-#rotX {
+#ruota {
 	position: absolute;
 	top: 300px;
 	left: 600px;
 }
+#stop {
+	position: absolute;
+	top: 300px;
+	left: 650px;
+}
 
+.transition {
+  -webkit-transition: all 1000s linear;
+  transition: all 1000s linear;
+}
+.translateAnimationClass { 
+  -webkit-transform: rotateX(43200deg) rotateY(14400deg);
+  transform: rotateX(43200deg) rotateY(14400deg); 
+}
+
+
+/* ****************************************************** ANIMAZIONI ********************************************************* */
+/* Animazione: cambia colore in modo graduale (da giallo a rosso) */
+@-webkit-keyframes cicloColore
+{
+	from {background: red;}
+	to {background: yellow;}
+}
+
+/* Animazione: trasla la posizione del componente */
+@-webkit-keyframes spostamento
+{
+	from {left: 0px; top: 0px;}
+	to {left: 300px; top: 300px;}
+}
+
+/* Animazione: cambia colore background nelle diverse fasi dell'animazione */
+@-webkit-keyframes cicloColore2
+{
+	0%   {background: red;}
+	20%  {background: lightred;}
+	60%  {background: lightblue;}
+	80%  {background: lightgreen;}
+	100% {background: black;}
+}
+
+/* L'effetto delle animazioni dura 3 secondi e viene ripetuto all'infinito */
+#div_1 {
+	-webkit-animation: cicloColore 3s infinite;
+	-webkit-animation-delay: 3s;	/* è possibile ritardare l'inizio dell'animazione */
+}
+
+#div_2 {
+	position: relative;
+	left: 30px;
+	-webkit-animation: spostamento 3s infinite;
+}
+
+#div_3 {
+	position: relative;
+	left: 30px;
+	-webkit-animation: spostamento 3s infinite alternate linear;	/* animazione con ripetizione infinita, alternata e lineare */
+}
+
+#div_4 {
+	position: relative;
+	left: 30px;
+	-webkit-animation: cicloColore2 3s infinite;
+}
+
+
+/* ***************************************************** EFFETTI PERSONALIZZATI ***************************************************** */
 /* Box contenitore Personalizzato */
 .stitched {
    padding: 20px;

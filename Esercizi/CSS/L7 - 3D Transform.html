@@ -1,0 +1,65 @@
+<!DOCTYPE html>	
+<!-- INTRODUZIONE al linguaggio di descrizione CSS (non è un linguaggio di programmazione).
+
+		 ************** NUOVI SELETTORI ***************
+ 		 
+ 		 **********************************************
+-->
+
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L7 - 3D Transform</title>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	
+	<!--	"CSS Reset"
+		La maggior parte dei browser "anziani", non conoscendo direttamente i nuovi elementi HTML5, applica a loro un foglio di stile di base errato,
+		assegnando ad esempio "display:inline" a tag come <article> o <section>.
+		Per risolvere questa fastidiosa incombenza la soluzione migliore è utilizzare un foglio di stile capace di resettare le proprietà di questi e
+		altri elementi attivando il comportamento atteso. Basta includerlo prima delle altre regole CSS.
+		
+		<link href="css/normalize-3.0.2.css" rel="stylesheet">
+	-->
+		
+	<link href="css/stili4.css" rel="stylesheet">
+	<script src="js/3dtransform.js"></script>
+	
+	<!--	"CSS fallback"
+		Questo script permette a Internet Explorer di applicare gli stili ai nuovi tag introdotti dall’HTML5
+		N.B. Occorre mantenerlo commentato!!!
+	-->
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> Effetti 3D sugli elementi
+	  
+		<section>
+			<div id="divSx" class="transition">
+				3D
+			</div>
+			
+			<div id="divDx">
+				<img src="imgs/fanta-logo.png" width="50%">
+			</div>
+			
+			<button id="ruota" onclick="startRotate()">	ruota </button>	<!-- ruota il div -->
+			<button id="stop" onclick="stopRotate()"> stop </button>	<!-- stoppa la rotazione -->
+		</section>
+	
+	</article>
+	
+	<aside> aside </aside>
+
+	<footer> footer </footer>
+	
+</body>
+</html>	
