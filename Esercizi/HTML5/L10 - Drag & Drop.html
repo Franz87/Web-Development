@@ -1,0 +1,67 @@
+<!-- INTRODUZIONE al linguaggio di descrizione HTML 5 (non è un linguaggio di programmazione)
+	 Tecniche avanzate per gestire le ombre, i pattern, i gradient e la modifica di immagini.
+
+	 ***************** DRAG E DROP *****************
+	 Permette di trascinare gli elementi (non tutti) in un'area destinazione.
+	
+	 Proprietà:
+	  - draggable: true/false;	// abilità/disabilita il drag&drop su un elemento
+	 Funzioni:
+	  - ondragstart: evento associato all'operazione di drag (prendo)
+	  - ondragover: evento associato all'operazione di passaggio sopra un elemento mentre si è in drag
+	  - ondrop: evento associato all'operazione di drop (rilascio)
+
+		data-nomeVariabile: in questo modo è possibile memorizzare una variabile dentro all'oggetto
+	 ***********************************************
+-->
+ 
+<!DOCTYPE html>	
+<html lang="it">	
+<head>
+	<meta charset="utf-8">
+	<title>L9 - Canvas - Gestione Immagini</title>
+	<link href="css/stile4.css" rel="stylesheet">
+	<!--[if lt IE 9]>
+	     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+		
+	<!-- richiama il file Javascript -->	
+	<script src="js/dragdrop.js"></script>
+</head>
+
+<body>
+	
+	<header> header </header>
+	
+	<nav> nav </nav>
+	
+	<article> Esempio di Drag & Drop
+	  
+	  <section>
+			<p> Trascina le icone sulla descrizione corretta </p>
+	  	
+			<div class="domande">
+				<div ondragover="dragOver(event)" data-risposta="imgs/hdd.png" ondrop="drop(event)"> Hard Disk Meccanico </div>
+				<div ondragover="dragOver(event)" data-risposta="imgs/pci.png" ondrop="drop(event)"> SSD PCI </div>
+				<div ondragover="dragOver(event)" data-risposta="imgs/ssd.png" ondrop="drop(event)"> SSD </div>
+			</div>
+			
+			<div class="separatore">
+				
+			</div>
+			
+			<div class="risposte">
+				<div> <img src="imgs/ssd.png" draggable="true" ondragstart="dragStart(event)"> </div>
+				<div> <img src="imgs/hdd.png" draggable="true" ondragstart="dragStart(event)"> </div>
+				<div> <img src="imgs/pci.png" draggable="true" ondragstart="dragStart(event)"> </div>
+			</div>
+	  </section>
+	  	
+	</article>
+	
+	<aside> aside </aside>
+	
+	<footer> footer </footer>
+	
+</body>
+</html>	

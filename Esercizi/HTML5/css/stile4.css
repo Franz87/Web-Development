@@ -43,6 +43,7 @@ section {
 	background-color: #F2F2F2;
 	padding: 10px;
 	margin: 10px 0 0 0;
+	overflow: hidden;
 }
 
 aside {
@@ -63,12 +64,48 @@ footer {
 	margin: 10px;
 }
 
-video {
-	height: 480px;
-	width: 640px;
+div.domande, div.risposte {
+	width: 250px;
+	height: 350px;
+	margin: 10px auto;
+	border: blue 1px solid;
 }
 
-/* Stile per il canvas */
-canvas {
-	border: 1px #000 dotted;
+div.domande div, div.risposte div {
+	width: 200px;
+	height: 100px;
+	margin: 10px auto;
+	border: red 1px solid;
+	position: relative;	/* serve poi per la classe 'replicaImmagine' che è impostata a 'position:absolute' */
+}
+
+img {
+	width: 50%;
+	margin: 0 50px 0 50px;
+}
+
+/* CLASSI PERSONALIZZATE */
+
+.domande {
+	float: left;
+}
+
+.risposte {
+	float: right;
+}
+
+.separatore {
+	width: 234px;
+	height: 350px;
+	margin: 10px auto;
+	border: blue 1px solid;
+	float: left;
+}
+
+.replicaImmagine {
+	position: absolute;	/* relativo al div della risposta, impostato a 'position:relative' */
+	left: 200px;
+	top: 30px;
+	width: 30%;
+	border: blue 1px dashed;
 }
